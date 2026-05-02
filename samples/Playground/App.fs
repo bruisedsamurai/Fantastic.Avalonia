@@ -39,7 +39,7 @@ module App =
         DesktopApplication() {
             Window(content())
 #if DEBUG
-                .attachDevTools()
+                .attachDeveloperTools()
 #endif
         }
 #endif

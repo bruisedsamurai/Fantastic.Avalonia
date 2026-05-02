@@ -322,7 +322,7 @@ module MainWindow =
                     .icon("avares://Gallery/Assets/Icons/logo.ico")
                     .windowId("MainWindow")
 #if DEBUG
-                    .attachDevTools()
+                    .attachDeveloperTools()
 #endif
             })
                 .trayIcon(trayIcon())

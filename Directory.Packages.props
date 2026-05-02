@@ -12,7 +12,7 @@
     <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Skia" Version="$(AvaloniaVersion)" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.14" />
+    <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.0" />
     <PackageVersion Include="Avalonia.Controls.ItemsRepeater" Version="11.1.5" />
     <PackageVersion Include="Avalonia.Controls.ColorPicker" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Controls.DataGrid" Version="12.0.0" />
