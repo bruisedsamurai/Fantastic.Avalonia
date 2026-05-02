@@ -87,7 +87,7 @@ _No unreleased changes_
 
 ## [2.0.0] - 2024-01-01
 ### Changed
-- Update multi-proj template to work with net8.0
+- Update multi-proj template to work with net10.0
 
 ## [2.0.0-pre18] - 2023-12-07
 ### Added

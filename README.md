@@ -173,7 +173,7 @@ MyApp
 └── MyApp.Browser
 ```
 
-net8.0-ios is not supported on Linux, thus net8.0-ios is excluded from build on a Linux host.
+net10.0-ios is not supported on Linux, thus net10.0-ios is excluded from build on a Linux host.
 
 ## Controls Gallery
 To run the `Gallery` sample app from the command line:
@@ -188,7 +188,7 @@ dotnet workload restore
 
 ```shell
 cd samples/Gallery
-dotnet run -f net8.0
+dotnet run -f net10.0
 ```
 
 You can also open the solution `Fabulous.Avalonia.sln` with your favorite IDE(We recommend [Rider](https://www.jetbrains.com/rider/)) and select the platform you want, then press debug to deploy and run the app.
