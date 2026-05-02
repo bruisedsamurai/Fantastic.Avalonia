@@ -1,7 +1,6 @@
 namespace Gallery
 
 open System
-open System.Buffers
 open System.Diagnostics
 open System.Reflection
 open Avalonia.Input
@@ -11,45 +10,10 @@ open Avalonia.Platform.Storage
 open Fabulous.Avalonia
 open Avalonia.Controls
 open Fabulous
-open Avalonia.Threading
 
 open type Fabulous.Avalonia.View
 
 module Validation =
-    type System.Collections.Generic.IAsyncEnumerable<'T> with
-
-        member this.AsTask() =
-            task {
-                let mutable nxt = true
-                let output = ResizeArray()
-                let enumerator = this.GetAsyncEnumerator()
-
-                while nxt do
-                    let! next = enumerator.MoveNextAsync()
-                    nxt <- next
-
-                    if nxt then
-                        output.Add enumerator.Current
-
-                return output.ToArray()
-            }
-
-    let ReadTextFromFile (file: IStorageFile, length: int) =
-        task {
-            use! stream = file.OpenReadAsync()
-
-            use reader = new System.IO.StreamReader(stream)
-
-            // 4GB file test, shouldn't load more than 10000 chars into a memory.
-            let buffer = ArrayPool<char>.Shared.Rent(length)
-
-            try
-                let! charsRead = reader.ReadAsync(buffer, 0, length)
-                return new string(buffer, 0, charsRead)
-            finally
-                ArrayPool<char>.Shared.Return(buffer)
-        }
-
     let getFiles () =
         async {
             let storageProvider = FabApplication.Current.StorageProvider
@@ -90,7 +54,7 @@ module DragAndDropPage =
         | DraggedOver of DragEventArgs
         | Drop of DragEventArgs
 
-    let customFormat = "application/xxx-avalonia-galleryapp-custom"
+    let customFormat = DataFormat.CreateStringApplicationFormat("xxx-avalonia-galleryapp-custom")
 
     let doDrop (e: DragEventArgs) =
         async {
@@ -101,11 +65,14 @@ module DragAndDropPage =
             else
                 e.DragEffects <- e.DragEffects &&& DragDropEffects.Copy
 
-            if e.Data.Contains(DataFormats.Text) then
-                return Dropped(e.Data.GetText())
+            let dataTransfer = e.DataTransfer
 
-            elif e.Data.Contains(DataFormats.Files) then
-                let files = e.Data.GetFiles()
+            if dataTransfer.Contains(DataFormat.Text) then
+                let text = dataTransfer.TryGetText()
+                return Dropped(if text = null then "" else text)
+
+            elif dataTransfer.Contains(DataFormat.File) then
+                let files = dataTransfer.TryGetFiles()
 
                 let files =
                     if files = null then
@@ -118,7 +85,7 @@ module DragAndDropPage =
                 for item in files do
                     match item with
                     | :? IStorageFile as file ->
-                        let! content = ReadTextFromFile(file, 500) |> Async.AwaitTask
+                        let! content = readTextFromStorageFile file 500 |> Async.AwaitTask
 
                         contentStr <-
                             contentStr
@@ -127,7 +94,7 @@ module DragAndDropPage =
 
                     | :? IStorageFolder as folder ->
                         let mutable childrenCount = 0
-                        let! items = folder.GetItemsAsync().AsTask() |> Async.AwaitTask
+                        let! items = asyncEnumerableToArray(folder.GetItemsAsync()) |> Async.AwaitTask
 
                         for _ in items do
                             childrenCount <- childrenCount + 1
@@ -140,20 +107,21 @@ module DragAndDropPage =
 
                 return Dropped(contentStr)
 
-            elif e.Data.Contains(customFormat) then
-                let res = "Custom: " + $"{e.Data.Get(customFormat)}"
+            elif dataTransfer.Contains(customFormat) then
+                let value = dataTransfer.TryGetValue(customFormat)
+                let res = "Custom: " + (if value = null then "" else value)
                 return Dropped(res)
             else
                 return Dropped("Unknown data")
         }
 
-    let doDrag args effects (factory: Action<DataObject>) borderDragged =
+    let doDrag args effects (factory: Action<DataTransfer>) borderDragged =
         async {
-            let dragData = DataObject()
+            let dragData = new DataTransfer()
             factory.Invoke(dragData)
 
             let! result =
-                Dispatcher.UIThread.InvokeAsync<DragDropEffects>(fun _ -> DragDrop.DoDragDrop(args, dragData, effects))
+                DragDrop.DoDragDropAsync(args, dragData, effects)
                 |> Async.AwaitTask
 
             let res =
@@ -181,9 +149,9 @@ module DragAndDropPage =
 
         // Only allow if the dragged data contains text or filenames.
         if
-            (not(e.Data.Contains(DataFormats.Text))
-             && not(e.Data.Contains(DataFormats.Files))
-             && not(e.Data.Contains(customFormat)))
+            (not(e.DataTransfer.Contains(DataFormat.Text))
+             && not(e.DataTransfer.Contains(DataFormat.File))
+             && not(e.DataTransfer.Contains(customFormat)))
         then
             e.DragEffects <- DragDropEffects.None
 
@@ -202,14 +170,14 @@ module DragAndDropPage =
             let effects = DragDropEffects.Copy ||| DragDropEffects.Move ||| DragDropEffects.Link
 
             let factory =
-                System.Action<DataObject>(fun d -> d.Set(DataFormats.Text, $"Text was dragged {model.DraggedCount} times"))
+                System.Action<DataTransfer>(fun d -> d.Add(DataTransferItem.CreateText($"Text was dragged {model.DraggedCount} times")))
 
             model, Cmd.OfAsync.msg(doDrag args effects factory BorderPointerPressed.First)
 
         | OnPointPressed2 args ->
             args.Handled <- true
             let effects = DragDropEffects.Move
-            let factory = System.Action<DataObject>(fun d -> d.Set(customFormat, "Test123"))
+            let factory = System.Action<DataTransfer>(fun d -> d.Add(DataTransferItem.Create(customFormat, "Test123")))
             model, Cmd.OfAsync.msg(doDrag args effects factory BorderPointerPressed.Second)
 
         | OnPointPressed3 args ->
@@ -217,7 +185,10 @@ module DragAndDropPage =
             let effects = DragDropEffects.Copy
             let files = getFiles() |> Async.RunSynchronously
 
-            let factory = System.Action<DataObject>(_.Set(DataFormats.Files, value = files))
+            let factory =
+                System.Action<DataTransfer>(fun d ->
+                    if files <> null then
+                        d.Add(DataTransferItem.CreateFile(files)))
 
             model, Cmd.OfAsync.msg(doDrag args effects factory BorderPointerPressed.Third)
 

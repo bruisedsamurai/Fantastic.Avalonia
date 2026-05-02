@@ -363,7 +363,7 @@ module NumericUpDownPage =
                             .verticalAlignment(VerticalAlignment.Center)
                             .numberFormat(model.NumberFormat)
                             .formatString(model.SelectedFormat.Value)
-                            .watermark("Enter text")
+                            .placeholderText("Enter text")
                             .textConverter(cultureConverter())
                             .margin(2.)
                     }
@@ -380,7 +380,7 @@ module NumericUpDownPage =
                             .verticalAlignment(VerticalAlignment.Center)
                             .numberFormat(model.NumberFormat)
                             .formatString(model.SelectedFormat.Value)
-                            .watermark("Enter text")
+                            .placeholderText("Enter text")
                             .margin(2.)
                     }
 
@@ -396,7 +396,7 @@ module NumericUpDownPage =
                             .verticalAlignment(VerticalAlignment.Center)
                             .numberFormat(model.NumberFormat)
                             .formatString(model.SelectedFormat.Value)
-                            .watermark("Enter text")
+                            .placeholderText("Enter text")
                             .margin(2.)
                             .dataValidationErrors([ Exception() ])
                     }
@@ -413,7 +413,7 @@ module NumericUpDownPage =
                             .verticalAlignment(VerticalAlignment.Center)
                             .numberFormat(model.NumberFormat)
                             .formatString(model.SelectedFormat.Value)
-                            .watermark("Enter text")
+                            .placeholderText("Enter text")
                             .margin(2.)
                             .textConverter(hexConverter())
                     }

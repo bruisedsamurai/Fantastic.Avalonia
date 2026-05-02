@@ -412,7 +412,7 @@ module AutoCompleteBoxPage =
 
                         AutoCompleteBox(model.UsFederalStates)
                             .minimumPrefixLength(1)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .onTextChanged(model.Text, SearchTextChanged)
                     }
 
@@ -420,7 +420,7 @@ module AutoCompleteBoxPage =
                         TextBlock("MinimumPrefixLength: 3")
 
                         AutoCompleteBox(model.Items)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .minimumPrefixLength(3)
                     }
 
@@ -428,7 +428,7 @@ module AutoCompleteBoxPage =
                         TextBlock("MinimumPopulateDelay: 1s")
 
                         AutoCompleteBox(model.Items)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .minimumPopulateDelay(TimeSpan.FromSeconds(1.0))
                     }
 
@@ -437,7 +437,7 @@ module AutoCompleteBoxPage =
 
                         AutoCompleteBox(model.Items)
                             .maxDropDownHeight(60.0)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                     }
 
                     VStack() {
@@ -445,14 +445,14 @@ module AutoCompleteBoxPage =
 
                         AutoCompleteBox(model.Items)
                             .isEnabled(false)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                     }
 
                     VStack() {
                         TextBlock("Multi-Binding")
 
                         AutoCompleteBox(model.UsFederalStates)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .filterMode(AutoCompleteFilterMode.Contains)
                             .multiBindValue("{0} ({1})", nameof stateData.Name, nameof stateData.Abbreviation)
                     }
@@ -468,7 +468,7 @@ module AutoCompleteBoxPage =
                                     TextBlock(state.Abbreviation + ",").foreground(Colors.White)
                                     TextBlock(state.Name).foreground(Colors.Red)
                                 })
-                            .watermark("Search a US state or capital")
+                            .placeholderText("Search a US state or capital")
                             .tip(ToolTip("the custom item filter searches the state name as well as the capital"))
                             .itemFilter(fun term item ->
                                 let state = item :?> StateData
@@ -479,7 +479,7 @@ module AutoCompleteBoxPage =
                         TextBlock("AsyncBox")
 
                         AutoCompleteBox(getItemsAsync)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .filterMode(AutoCompleteFilterMode.Contains)
                     }
 
@@ -487,8 +487,8 @@ module AutoCompleteBoxPage =
                         TextBlock("Async remote-filtered search")
 
                         AutoCompleteBox(model.UsStateSearch.SearchAsync)
-                            .watermark("Search capitals of US federal states by name or state")
-                            .minimumPopulateDelay(TimeSpan.FromMilliseconds 300) // debounce the requests
+                            .placeholderText("Search capitals of US federal states by name or state")
+                            .minimumPopulateDelay(TimeSpan.FromMilliseconds 300.) // debounce the requests
                             .onTextChanged(model.AsyncSearchTerm, AsyncSearchTermChanged)
                             .filterMode(AutoCompleteFilterMode.None) // remote filtered
                             .multiBindValue("{2}, {1} ({0})", nameof stateData.Name, nameof stateData.Abbreviation, nameof stateData.Capital)
@@ -515,7 +515,7 @@ module AutoCompleteBoxPage =
                         TextBlock("Custom AutoComplete")
 
                         AutoCompleteBox(model.Custom)
-                            .watermark("Select an item")
+                            .placeholderText("Select an item")
                             .reference(customAutoCompleteBoxRef)
                             .filterMode(AutoCompleteFilterMode.None)
                             .onLoaded(CustomAutoBoxLoaded)

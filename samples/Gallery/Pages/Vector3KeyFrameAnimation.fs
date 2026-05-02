@@ -32,7 +32,7 @@ module Vector3KeyFrameAnimation =
             let animation = compositor.CreateVector3KeyFrameAnimation()
             animation.InsertKeyFrame(1f, Vector3(200f, 0f, 0f))
             animation.Direction <- PlaybackDirection.Alternate
-            animation.Duration <- TimeSpan.FromSeconds(2)
+            animation.Duration <- TimeSpan.FromSeconds(2.)
             animation.IterationBehavior <- AnimationIterationBehavior.Count
             animation.IterationCount <- Int32.MaxValue
 

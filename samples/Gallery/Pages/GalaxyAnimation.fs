@@ -38,7 +38,7 @@ module GalaxyAnimation =
                 ()
             else
                 let orbitAnimation = compositor.CreateScalarKeyFrameAnimation()
-                orbitAnimation.Duration <- TimeSpan.FromSeconds(10)
+                orbitAnimation.Duration <- TimeSpan.FromSeconds(10.)
                 orbitAnimation.IterationBehavior <- AnimationIterationBehavior.Forever
                 orbitAnimation.InsertKeyFrame(1f, float32(4.0 * Math.PI), LinearEasing())
                 _orbitVisual.CenterPoint <- Vector3(float32 orbit.Bounds.Width / float32 2, float32 orbit.Bounds.Height / float32 2., float32 0.)

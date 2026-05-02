@@ -101,13 +101,13 @@ module ImplicitCanvasAnimationsPage =
             let offsetAnimation = compositor.CreateVector3KeyFrameAnimation()
             offsetAnimation.Target <- "Offset"
             offsetAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue", sprintEasing1)
-            offsetAnimation.Duration <- TimeSpan.FromMilliseconds(400)
+            offsetAnimation.Duration <- TimeSpan.FromMilliseconds(400.)
 
             let rotationAnimation = compositor.CreateScalarKeyFrameAnimation()
             rotationAnimation.Target <- "RotationAngle"
             rotationAnimation.InsertKeyFrame(0.0f, 0.0f, sprintEasing2)
             rotationAnimation.InsertKeyFrame(1.0f, float32(Math.PI * 2.0), sprintEasing2)
-            rotationAnimation.Duration <- TimeSpan.FromMilliseconds(400)
+            rotationAnimation.Duration <- TimeSpan.FromMilliseconds(400.)
 
             let animationGroup = compositor.CreateAnimationGroup()
             animationGroup.Add(offsetAnimation)

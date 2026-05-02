@@ -43,7 +43,7 @@ module CustomAnimatorPage =
                                       Setter(TextBlock.IsVisibleProperty, true) ]
                                 )
                                     .cue(0),
-                                TimeSpan.FromSeconds(3)
+                                TimeSpan.FromSeconds(3.)
                             )
 
                             Animation(
@@ -52,7 +52,7 @@ module CustomAnimatorPage =
                                       Setter(TextBlock.IsVisibleProperty, true) ]
                                 )
                                     .cue(1),
-                                TimeSpan.FromSeconds(3)
+                                TimeSpan.FromSeconds(3.)
                             )
                         }
 

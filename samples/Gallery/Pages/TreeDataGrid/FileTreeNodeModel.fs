@@ -176,7 +176,10 @@ type FileTreeNodeModel(path, isDirectory, ?isRoot) =
         member this.EndEdit() = _undoName <- null
 
     static member SortAscending(selector: Func<FileTreeNodeModel, 'T>) =
-        fun (x: FileTreeNodeModel) (y: FileTreeNodeModel) ->
+        Comparison<obj>(fun x y ->
+            let x = x :?> FileTreeNodeModel
+            let y = y :?> FileTreeNodeModel
+
             if (x = Unchecked.defaultof<_> && y = Unchecked.defaultof<_>) then
                 0
             elif (x = Unchecked.defaultof<_>) then
@@ -189,10 +192,13 @@ type FileTreeNodeModel(path, isDirectory, ?isRoot) =
             elif x.IsDirectory then
                 -1
             else
-                1
+                1)
 
     static member SortDescending(selector: Func<FileTreeNodeModel, 'T>) =
-        fun (x: FileTreeNodeModel) (y: FileTreeNodeModel) ->
+        Comparison<obj>(fun x y ->
+            let x = x :?> FileTreeNodeModel
+            let y = y :?> FileTreeNodeModel
+
             if (x = Unchecked.defaultof<_> && y = Unchecked.defaultof<_>) then
                 0
             elif (x = Unchecked.defaultof<_>) then
@@ -205,4 +211,4 @@ type FileTreeNodeModel(path, isDirectory, ?isRoot) =
             elif x.IsDirectory then
                 -1
             else
-                1
+                1)

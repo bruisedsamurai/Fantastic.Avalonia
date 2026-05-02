@@ -45,7 +45,6 @@ module MenuPage =
                         MenuItems(header = Image("avares://Gallery/Assets/Icons/fabulous-icon.png")) {
                             MenuItem("Standard _Menu Item")
                                 .inputGesture(KeyGesture(Key.A, KeyModifiers.Control))
-                                .enableMenuItemClickForwarding(true)
 
                             MenuItem("_Disabled Menu Item")
                                 .inputGesture(KeyGesture(Key.D, KeyModifiers.Control))

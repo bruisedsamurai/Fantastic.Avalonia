@@ -113,7 +113,7 @@ module DrawLineAnimationPage =
                         .renderTransformOrigin(model.Origin)
                         .renderTransform(RotateTransform())
                         .animation(
-                            (Animation(TimeSpan.FromSeconds(5)) {
+                            (Animation(TimeSpan.FromSeconds(5.)) {
                                 KeyFrame(RotateTransform.AngleProperty, 0.).cue(0.)
                                 KeyFrame(RotateTransform.AngleProperty, 360.).cue(1.)
                             })

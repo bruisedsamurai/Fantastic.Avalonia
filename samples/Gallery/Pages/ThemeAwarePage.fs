@@ -96,13 +96,13 @@ module ThemeAwarePage =
                                 .verticalAlignment(VerticalAlignment.Center)
 
                             TextBox(model.Text, TextChanged)
-                                .watermark("Input here")
+                                .placeholderText("Input here")
                                 .gridColumn(1)
                                 .gridRow(2)
                                 .horizontalAlignment(HorizontalAlignment.Stretch)
 
                             TextBox(model.Text2, Text2Changed)
-                                .watermark("Input here")
+                                .placeholderText("Input here")
                                 .gridColumn(1)
                                 .gridRow(4)
                                 .horizontalAlignment(HorizontalAlignment.Stretch)

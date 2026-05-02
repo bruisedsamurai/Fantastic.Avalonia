@@ -46,12 +46,12 @@ module MainWindow =
         | DecorationsOnSelectionChanged args ->
             let args = args.Source :?> ComboBox
             let content = args.SelectedItem :?> ComboBoxItem
-            let decoration = SystemDecorations.Parse(content.Content.ToString())
+            let decoration = WindowDecorations.Parse(content.Content.ToString())
             let mainWindow = FabApplication.Current.FindWindowById("MainWindow")
 
             match mainWindow with
             | None -> ()
-            | Some currentWindow -> currentWindow.SystemDecorations <- decoration
+            | Some currentWindow -> currentWindow.WindowDecorations <- decoration
 
             model
         | ThemeVariantsOnSelectionChanged args ->
@@ -105,7 +105,7 @@ module MainWindow =
                         NativeMenuItemSeparator()
 
                         NativeMenuItem("After separator", DoNothing)
-                            .toggleType(NativeMenuItemToggleType.CheckBox)
+                            .toggleType(MenuItemToggleType.CheckBox)
                     }
                 )
         }
@@ -118,17 +118,17 @@ module MainWindow =
                         .menu(
                             NativeMenu() {
                                 NativeMenuItem("Option 1", DoNothing)
-                                    .toggleType(NativeMenuItemToggleType.Radio)
+                                    .toggleType(MenuItemToggleType.Radio)
                                     .isChecked(true)
 
                                 NativeMenuItem("Option 2", DoNothing)
-                                    .toggleType(NativeMenuItemToggleType.Radio)
+                                    .toggleType(MenuItemToggleType.Radio)
                                     .isChecked(true)
 
                                 NativeMenuItemSeparator()
 
                                 NativeMenuItem("Option 3", DoNothing)
-                                    .toggleType(NativeMenuItemToggleType.CheckBox)
+                                    .toggleType(MenuItemToggleType.CheckBox)
                                     .isChecked(true)
 
                                 NativeMenuItem("Restore defaults", DoNothing)
