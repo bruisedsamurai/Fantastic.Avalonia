@@ -70,6 +70,7 @@
     <Compile Include="Views\_TemplatedControl.fs" />
     <Compile Include="Views\_TemplatedControl.Components.fs" />
     <Compile Include="Views\_TemplatedControl.Mvu.fs" />
+    <Compile Include="Views\_Page.fs" />
     <Compile Include="Views\_ContentControl.fs" />
     <Compile Include="Views\_Spinner.fs" />
     <Compile Include="Views\_Spinner.Components.fs" />
@@ -256,6 +257,9 @@
     <Compile Include="Views\Controls\Window.fs" />
     <Compile Include="Views\Controls\Window.Mvu.fs" />
     <Compile Include="Views\Controls\Window.Components.fs" />
+    <Compile Include="Views\Controls\Navigation\DrawerPage.fs" />
+    <Compile Include="Views\Controls\Navigation\DrawerPage.Mvu.fs" />
+    <Compile Include="Views\Controls\Navigation\DrawerPage.Components.fs" />
     <Compile Include="Views\Controls\ProgressBar.fs" />
     <Compile Include="Views\Controls\ProgressBar.Mvu.fs" />
     <Compile Include="Views\Controls\ProgressBar.Components.fs" />
@@ -328,8 +332,8 @@
     <Compile Include="Views\Imaging\TrayIcon.Components.fs" />
     <Compile Include="Views\Imaging\PathIcon.fs" />
     <Compile Include="Views\Layouts\SplitView.fs" />
-    <Compile Include="Views\Layouts\SliptView.Mvu.fs" />
-    <Compile Include="Views\Layouts\SliptView.Components.fs" />
+    <Compile Include="Views\Layouts\SplitView.Mvu.fs" />
+    <Compile Include="Views\Layouts\SplitView.Components.fs" />
     <Compile Include="Views\Layouts\ScrollViewer.fs" />
     <Compile Include="Views\Layouts\ScrollViewer.Mvu.fs" />
     <Compile Include="Views\Layouts\ScrollViewer.Components.fs" />

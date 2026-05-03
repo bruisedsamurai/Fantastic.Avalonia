@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-_No unreleased changes_
+
+### Added
+- Add `DrawerPage` control with `IFabPage` abstract base. Exposes the full Avalonia 12 `DrawerPage` surface: `Drawer`, `Content`, `IsOpen` (with two-way binding for MVU/Component), `DrawerLength`, `CompactDrawerLength`, `DrawerBreakpointLength`, `IsGestureEnabled`, `DrawerBehavior`, `DrawerLayoutBehavior`, `DrawerPlacement`, `DrawerHeader`/`DrawerFooter`/`DrawerIcon` (string, widget, and template overloads), drawer/header/footer brushes, `BackdropBrush`, content alignment, and the `Opened`/`Closing`/`Closed` routed events.
 
 ## [3.0.0-pre13] - 2025-11-19
 
