@@ -1,5 +1,6 @@
 namespace Fabulous.Avalonia
 
+open System
 open System.Collections.Generic
 open System.Runtime.CompilerServices
 open Avalonia
@@ -23,6 +24,8 @@ type FabApplication() =
     let _windows = List<FabWindow>()
 
     let mutable _mainView: Control = null
+
+    let mutable _mainViewFactory: Func<Control> = null
 
     let mutable _shutdownMode: ShutdownMode = ShutdownMode.OnLastWindowClose
 
@@ -65,59 +68,57 @@ type FabApplication() =
     member private this.UpdateLifetime() =
         match this.ApplicationLifetime with
         | :? IClassicDesktopStyleApplicationLifetime as desktopLifetime when _windows.Count > 0 -> desktopLifetime.MainWindow <- _windows[0]
+        | :? IActivityApplicationLifetime as activityLifetime when not(isNull _mainViewFactory) ->
+            activityLifetime.MainViewFactory <- _mainViewFactory
         | :? ISingleViewApplicationLifetime as singleViewLifetime -> singleViewLifetime.MainView <- _mainView
         | _ -> ()
 
-    /// <summary>Gets the top-level window or view for the application.</summary>
-    member this.TopLevel =
+    /// <summary>Resolves the live <see cref="TopLevel"/> for the current application lifetime.</summary>
+    member private this.GetTopLevel() =
         match this.ApplicationLifetime with
         | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> TopLevel.GetTopLevel(_windows[0])
+        | :? IActivityApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView)
         | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView)
         | _ -> failwith "ApplicationLifetime is not supported"
 
+    /// <summary>Gets the top-level window or view for the application.</summary>
+    member this.TopLevel = this.GetTopLevel()
+
     /// <summary> Initializes a new instance of the WindowNotificationManager class.</summary>
-    member this.WindowNotificationManager =
-        match this.ApplicationLifetime with
-        | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> WindowNotificationManager(TopLevel.GetTopLevel(_windows[0]))
-        | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> WindowNotificationManager(TopLevel.GetTopLevel(_mainView))
-        | _ -> failwith "ApplicationLifetime is not supported"
+    member this.WindowNotificationManager = WindowNotificationManager(this.GetTopLevel())
 
     /// <summary>Gets the platform's clipboard implementation</summary>
-    member this.Clipboard =
-        match this.ApplicationLifetime with
-        | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> TopLevel.GetTopLevel(_windows[0]).Clipboard
-        | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView).Clipboard
-        | _ -> failwith "ApplicationLifetime is not supported"
+    member this.Clipboard = this.GetTopLevel().Clipboard
 
     /// <summary>File System storage service used for file pickers and bookmarks.</summary>
-    member this.StorageProvider =
-        match this.ApplicationLifetime with
-        | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> TopLevel.GetTopLevel(_windows[0]).StorageProvider
-        | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView).StorageProvider
-        | _ -> failwith "ApplicationLifetime is not supported"
+    member this.StorageProvider = this.GetTopLevel().StorageProvider
 
     /// <summary>Manages focus for the application.</summary>
-    member this.FocusManager =
-        match this.ApplicationLifetime with
-        | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> TopLevel.GetTopLevel(_windows[0]).FocusManager
-        | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView).FocusManager
-        | _ -> failwith "ApplicationLifetime is not supported"
+    member this.FocusManager = this.GetTopLevel().FocusManager
 
     /// <summary>Gets the platform-specific settings for the application.</summary>
     member this.PlatformSettings =
-        Avalonia.VisualTree.VisualExtensions.GetPlatformSettings(this.TopLevel)
+        Avalonia.VisualTree.VisualExtensions.GetPlatformSettings(this.GetTopLevel())
 
     /// <summary>Gets the platform-specific insets manager for the application.</summary>
-    member this.InsetsManager =
-        match this.ApplicationLifetime with
-        | :? IClassicDesktopStyleApplicationLifetime when _windows.Count > 0 -> TopLevel.GetTopLevel(_windows[0]).InsetsManager
-        | :? ISingleViewApplicationLifetime when not(isNull _mainView) -> TopLevel.GetTopLevel(_mainView).InsetsManager
-        | _ -> failwith "ApplicationLifetime is not supported"
+    member this.InsetsManager = this.GetTopLevel().InsetsManager
 
     member this.MainView
         with get () = _mainView
         and set value =
             _mainView <- value
+            this.UpdateLifetime()
+
+    /// <summary>Tracks the latest concrete root <see cref="Control"/>, typically used by the Android activity factory. Does not re-apply the lifetime.</summary>
+    member this.CurrentMainView
+        with get () = _mainView
+        and set value = _mainView <- value
+
+    /// <summary>Gets or sets the factory invoked by Android's <see cref="IActivityApplicationLifetime"/> to create a fresh root <see cref="Control"/> per activity instance.</summary>
+    member this.MainViewFactory
+        with get () = _mainViewFactory
+        and set value =
+            _mainViewFactory <- value
             this.UpdateLifetime()
 
     member this.ShutdownMode
@@ -133,17 +134,30 @@ type FabApplication() =
 module ApplicationUpdaters =
     let mainViewApplyDiff (diff: WidgetDiff) (node: IViewNode) =
         let target = node.Target :?> FabApplication
-        let childViewNode = node.TreeContext.GetViewNode(target.MainView)
-        childViewNode.ApplyDiff(&diff)
+
+        if not(isNull target.MainView) then
+            let childViewNode = node.TreeContext.GetViewNode(target.MainView)
+            childViewNode.ApplyDiff(&diff)
 
     let mainViewUpdateNode (_: Widget voption) (currOpt: Widget voption) (node: IViewNode) =
         let target = node.Target :?> FabApplication
 
         match currOpt with
-        | ValueNone -> target.MainView <- Unchecked.defaultof<_>
+        | ValueNone ->
+            target.MainView <- Unchecked.defaultof<_>
+            target.MainViewFactory <- null
         | ValueSome widget ->
-            let struct (_, view) = Helpers.createViewForWidget node widget
-            target.MainView <- view :?> Control
+            match target.ApplicationLifetime with
+            | :? IActivityApplicationLifetime ->
+                target.MainViewFactory <-
+                    Func<Control>(fun () ->
+                        let struct (_, view) = Helpers.createViewForWidget node widget
+                        let control = view :?> Control
+                        target.CurrentMainView <- control
+                        control)
+            | _ ->
+                let struct (_, view) = Helpers.createViewForWidget node widget
+                target.MainView <- view :?> Control
 
 module Application =
     let WidgetKey = Widgets.register<FabApplication>()
