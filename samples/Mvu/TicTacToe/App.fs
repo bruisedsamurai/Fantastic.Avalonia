@@ -132,7 +132,7 @@ module App =
 
             { model with VisualBoardSize = size }, Cmd.none
 #else
-            let desiredSize = app.MainWindow.Screens.Primary
+            let desiredSize = app.TopLevel.Screens.Primary
 
             let size =
                 Math.Min(float desiredSize.Bounds.Width, float desiredSize.Bounds.Height)
