@@ -27,6 +27,12 @@ module InputElement =
     let TabIndex =
         Attributes.defineAvaloniaPropertyWithEquality InputElement.TabIndexProperty
 
+    let IsHoldingEnabled =
+        Attributes.defineAvaloniaPropertyWithEquality InputElement.IsHoldingEnabledProperty
+
+    let IsHoldWithMouseEnabled =
+        Attributes.defineAvaloniaPropertyWithEquality InputElement.IsHoldWithMouseEnabledProperty
+
 type InputElementModifiers =
     /// <summary>Sets the Focusable property.</summary>
     /// <param name="this">Current widget.</param>
@@ -69,3 +75,17 @@ type InputElementModifiers =
     [<Extension>]
     static member inline tabIndex(this: WidgetBuilder<'msg, #IFabInputElement>, value: int) =
         this.AddScalar(InputElement.TabIndex.WithValue(value))
+
+    /// <summary>Sets the IsHoldingEnabled attached property, controlling whether the Holding event can fire on this element. Defaults to true in Avalonia.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The IsHoldingEnabled value.</param>
+    [<Extension>]
+    static member inline isHoldingEnabled(this: WidgetBuilder<'msg, #IFabInputElement>, value: bool) =
+        this.AddScalar(InputElement.IsHoldingEnabled.WithValue(value))
+
+    /// <summary>Sets the IsHoldWithMouseEnabled attached property, allowing the Holding event to fire for mouse input. Defaults to false in Avalonia, so set this to true to receive holding gestures from a mouse.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The IsHoldWithMouseEnabled value.</param>
+    [<Extension>]
+    static member inline isHoldWithMouseEnabled(this: WidgetBuilder<'msg, #IFabInputElement>, value: bool) =
+        this.AddScalar(InputElement.IsHoldWithMouseEnabled.WithValue(value))
