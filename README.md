@@ -191,7 +191,7 @@ cd samples/Gallery
 dotnet run -f net10.0
 ```
 
-You can also open the solution `Fabulous.Avalonia.sln` with your favorite IDE(We recommend [Rider](https://www.jetbrains.com/rider/)) and select the platform you want, then press debug to deploy and run the app.
+You can also open the solution `Fabulous.Avalonia.slnx` with your favorite IDE(We recommend [Rider](https://www.jetbrains.com/rider/)) and select the platform you want, then press debug to deploy and run the app.
 
 ## Documentation
 

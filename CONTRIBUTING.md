@@ -80,7 +80,7 @@ To build Fabulous.Avalonia, you will need to install:
 - the iOS and Android workloads by executing at the root of the project the following command: `dotnet workload restore`
 - an IDE of your preference between: Visual Studio (Windows and macOS) or [JetBrains Rider]
 
-Once everything is set up, you can either open the Fabulous.MauiControls.sln file at the root with your preferred IDE and build the solution or execute the command `dotnet build Fabulous.Avalonia.sln`.
+Once everything is set up, you can either open the Fabulous.Avalonia.slnx file at the root with your preferred IDE and build the solution or execute the command `dotnet build Fabulous.Avalonia.slnx`.
 
 
 ### Performing changes

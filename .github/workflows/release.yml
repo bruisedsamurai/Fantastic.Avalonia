@@ -8,7 +8,7 @@ permissions: write-all
 
 env:
   CONFIG: Release
-  SLN_FILE: Fabulous.Avalonia.NoSamples.sln
+  SLN_FILE: Fabulous.Avalonia.NoSamples.slnx
   MAIN_PROJ: src/Fabulous.Avalonia/Fabulous.Avalonia.fsproj
   AVALONIALABS_PROJ: extensions/Fabulous.Avalonia.Labs/Fabulous.Avalonia.Labs.fsproj
   ITEMSREPEATER_PROJ: extensions/Fabulous.Avalonia.ItemsRepeater/Fabulous.Avalonia.ItemsRepeater.fsproj
