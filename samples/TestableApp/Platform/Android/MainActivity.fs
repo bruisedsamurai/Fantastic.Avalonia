@@ -1,11 +1,13 @@
 namespace TestableApp.Android
 
 open Android.App
+open System
 open Android.Content.PM
+open Android.Runtime
 open Avalonia
 open Avalonia.Android
-open TestableApp
 open Fabulous.Avalonia
+open TestableApp
 
 [<Activity(Label = "Counter.Android",
            Theme = "@style/MyTheme.NoActionBar",
@@ -13,7 +15,10 @@ open Fabulous.Avalonia
            LaunchMode = LaunchMode.SingleTop,
            ConfigurationChanges = (ConfigChanges.Orientation ||| ConfigChanges.ScreenSize))>]
 type MainActivity() =
-    inherit AvaloniaMainActivity<FabApplication>()
+    inherit AvaloniaMainActivity()
 
-    override this.CustomizeAppBuilder(_builder: AppBuilder) =
-        AppBuilder.Configure<FabApplication>().UseAndroid()
+[<Application>]
+type MainApplication(handle: IntPtr, ownership: JniHandleOwnership) =
+    inherit AvaloniaAndroidApplication<FabApplication>(handle, ownership)
+
+    override this.CustomizeAppBuilder(_builder: AppBuilder) = AppBuilder.Configure<FabApplication>().UseAndroid()
