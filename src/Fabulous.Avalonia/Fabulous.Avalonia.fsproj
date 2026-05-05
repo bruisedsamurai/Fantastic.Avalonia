@@ -257,6 +257,7 @@
     <Compile Include="Views\Controls\Window.fs" />
     <Compile Include="Views\Controls\Window.Mvu.fs" />
     <Compile Include="Views\Controls\Window.Components.fs" />
+    <Compile Include="Views\Controls\Navigation\ContentPage.fs" />
     <Compile Include="Views\Controls\Navigation\DrawerPage.fs" />
     <Compile Include="Views\Controls\Navigation\DrawerPage.Mvu.fs" />
     <Compile Include="Views\Controls\Navigation\DrawerPage.Components.fs" />
