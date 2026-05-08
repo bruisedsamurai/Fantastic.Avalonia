@@ -7,54 +7,100 @@ open Fabulous.Avalonia
 open System.Runtime.CompilerServices
 
 module ComponentSplitView =
-    let PanClosed =
-        Attributes.Component.defineEvent "SplitView_PanClosed" (fun target -> (target :?> SplitView).PaneClosed)
+    let PaneClosed =
+        Attributes.Component.defineEvent "SplitView_PaneClosed" (fun target -> (target :?> SplitView).PaneClosed)
 
-    let PanClosing =
-        Attributes.Component.defineEvent "SplitView_PanClosing" (fun target -> (target :?> SplitView).PaneClosing)
+    let PaneClosing =
+        Attributes.Component.defineEvent "SplitView_PaneClosing" (fun target -> (target :?> SplitView).PaneClosing)
 
-    let PanOpened =
-        Attributes.Component.defineEvent "SplitView_PanOpened" (fun target -> (target :?> SplitView).PaneOpened)
+    let PaneOpened =
+        Attributes.Component.defineEvent "SplitView_PaneOpened" (fun target -> (target :?> SplitView).PaneOpened)
 
-    let PanOpening =
-        Attributes.Component.defineEvent "SplitView_PanOpening" (fun target -> (target :?> SplitView).PaneOpening)
+    let PaneOpening =
+        Attributes.Component.defineEvent "SplitView_PaneOpening" (fun target -> (target :?> SplitView).PaneOpening)
 
-    let IsPresented =
-        Attributes.Component.defineAvaloniaPropertyWithChangedEvent' "SplitView_IsPresented" SplitView.IsPaneOpenProperty
+    let IsPaneOpenChanged =
+        Attributes.Component.defineAvaloniaPropertyWithChangedEvent' "SplitView_IsPaneOpenChanged" SplitView.IsPaneOpenProperty
+
+    let PanClosed = PaneClosed
+
+    let PanClosing = PaneClosing
+
+    let PanOpened = PaneOpened
+
+    let PanOpening = PaneOpening
+
+    let IsPresented = IsPaneOpenChanged
 
 type ComponentSplitViewModifiers =
-    /// <summary>Listens to the SplitView PanClosed event.</summary>
+    /// <summary>Listens to the SplitView PaneClosed event.</summary>
     /// <param name="this">Current widget.</param>
-    /// <param name="fn">Raised when the PanClosed event fires.</param>
+    /// <param name="fn">Raised when the PaneClosed event fires.</param>
+    [<Extension>]
+    static member inline onPaneClosed(this: WidgetBuilder<'msg, #IFabSplitView>, fn: RoutedEventArgs -> unit) =
+        this.AddScalar(ComponentSplitView.PaneClosed.WithValue(fn))
+
+    /// <summary>Listens to the SplitView PaneClosing event.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="fn">Raised when the PaneClosing event fires.</param>
+    [<Extension>]
+    static member inline onPaneClosing(this: WidgetBuilder<'msg, #IFabSplitView>, fn: CancelRoutedEventArgs -> unit) =
+        this.AddScalar(ComponentSplitView.PaneClosing.WithValue(fn))
+
+    /// <summary>Listens to the SplitView PaneOpened event.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="fn">Raised when the PaneOpened event fires.</param>
+    [<Extension>]
+    static member inline onPaneOpened(this: WidgetBuilder<'msg, #IFabSplitView>, fn: RoutedEventArgs -> unit) =
+        this.AddScalar(ComponentSplitView.PaneOpened.WithValue(fn))
+
+    /// <summary>Listens to the SplitView PaneOpening event.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="fn">Raised when the PaneOpening event fires.</param>
+    [<Extension>]
+    static member inline onPaneOpening(this: WidgetBuilder<'msg, #IFabSplitView>, fn: CancelRoutedEventArgs -> unit) =
+        this.AddScalar(ComponentSplitView.PaneOpening.WithValue(fn))
+
+    /// <summary>Listens to the SplitView IsPaneOpen property changes.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="isPaneOpen">The IsPaneOpen value.</param>
+    /// <param name="fn">Raised when the IsPaneOpen property changes.</param>
+    [<Extension>]
+    static member inline onIsPaneOpenChanged(this: WidgetBuilder<'msg, #IFabSplitView>, isPaneOpen: bool, fn: bool -> unit) =
+        this.AddScalar(ComponentSplitView.IsPaneOpenChanged.WithValue(ComponentValueEventData.create isPaneOpen fn))
+
+    /// <summary>Listens to the SplitView PaneClosed event.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="fn">Raised when the PaneClosed event fires.</param>
     [<Extension>]
     static member inline onPanClosed(this: WidgetBuilder<'msg, #IFabSplitView>, fn: RoutedEventArgs -> unit) =
         this.AddScalar(ComponentSplitView.PanClosed.WithValue(fn))
 
-    /// <summary>Listens to the SplitView PanClosing event.</summary>
+    /// <summary>Listens to the SplitView PaneClosing event.</summary>
     /// <param name="this">Current widget.</param>
-    /// <param name="fn">Raised when the PanClosing event fires.</param>
+    /// <param name="fn">Raised when the PaneClosing event fires.</param>
     [<Extension>]
     static member inline onPanClosing(this: WidgetBuilder<'msg, #IFabSplitView>, fn: CancelRoutedEventArgs -> unit) =
         this.AddScalar(ComponentSplitView.PanClosing.WithValue(fn))
 
-    /// <summary>Listens to the SplitView PanOpened event.</summary>
+    /// <summary>Listens to the SplitView PaneOpened event.</summary>
     /// <param name="this">Current widget.</param>
-    /// <param name="fn">Raised when the PanOpened event fires.</param>
+    /// <param name="fn">Raised when the PaneOpened event fires.</param>
     [<Extension>]
     static member inline onPanOpened(this: WidgetBuilder<'msg, #IFabSplitView>, fn: RoutedEventArgs -> unit) =
         this.AddScalar(ComponentSplitView.PanOpened.WithValue(fn))
 
-    /// <summary>Listens to the SplitView PanOpening event.</summary>
+    /// <summary>Listens to the SplitView PaneOpening event.</summary>
     /// <param name="this">Current widget.</param>
-    /// <param name="fn">Raised when the PanOpening event fires.</param>
+    /// <param name="fn">Raised when the PaneOpening event fires.</param>
     [<Extension>]
     static member inline onPanOpening(this: WidgetBuilder<'msg, #IFabSplitView>, fn: CancelRoutedEventArgs -> unit) =
         this.AddScalar(ComponentSplitView.PanOpening.WithValue(fn))
 
-    /// <summary>Listens to the SplitView IsPresented event.</summary>
+    /// <summary>Listens to the SplitView IsPaneOpen property changes.</summary>
     /// <param name="this">Current widget.</param>
-    /// <param name="value">The IsPresented value.</param>
-    /// <param name="fn">Raised when the IsPresented event fires.</param>
+    /// <param name="value">The IsPaneOpen value.</param>
+    /// <param name="fn">Raised when the IsPaneOpen property changes.</param>
     [<Extension>]
     static member inline isPresented(this: WidgetBuilder<'msg, #IFabSplitView>, value: bool, fn: bool -> unit) =
         this.AddScalar(ComponentSplitView.IsPresented.WithValue(ComponentValueEventData.create value fn))

@@ -2,6 +2,7 @@
 
 open Avalonia.Controls
 open Avalonia.Controls.Primitives
+open Avalonia.Controls.Templates
 open Avalonia.Media
 open Fabulous
 open System.Runtime.CompilerServices
@@ -36,6 +37,18 @@ module SplitView =
 
     let Pane = Attributes.defineAvaloniaPropertyWidget SplitView.PaneProperty
 
+    let PaneString =
+        Attributes.defineAvaloniaProperty<string, obj> SplitView.PaneProperty box ScalarAttributeComparers.equalityCompare
+
+    let PaneObject =
+        Attributes.defineAvaloniaPropertyWithEquality SplitView.PaneProperty
+
+    let PaneTemplate =
+        Attributes.defineAvaloniaPropertyWithEquality SplitView.PaneTemplateProperty
+
+    let TemplateSettings =
+        Attributes.defineAvaloniaPropertyWithEquality SplitView.TemplateSettingsProperty
+
     let UseLightDismissOverlayMode =
         Attributes.defineAvaloniaPropertyWithEquality SplitView.UseLightDismissOverlayModeProperty
 
@@ -48,6 +61,44 @@ module SplitView =
 [<AutoOpen>]
 module SplitViewBuilders =
     type Fabulous.Avalonia.View with
+
+        /// <summary>Creates a SplitView widget.</summary>
+        /// <param name="pane">The content of the pane.</param>
+        /// <param name="content">The content to display.</param>
+        static member SplitView(pane: string, content: string) =
+            WidgetBuilder<'msg, IFabSplitView>(
+                SplitView.WidgetKey,
+                SplitView.PaneString.WithValue(pane),
+                ContentControl.ContentString.WithValue(content)
+            )
+
+        /// <summary>Creates a SplitView widget.</summary>
+        /// <param name="pane">The content of the pane.</param>
+        /// <param name="content">The content to display.</param>
+        static member SplitView(pane: WidgetBuilder<'msg, #IFabControl>, content: string) =
+            WidgetBuilder<'msg, IFabSplitView>(
+                SplitView.WidgetKey,
+                AttributesBundle(
+                    StackList.one(ContentControl.ContentString.WithValue(content)),
+                    [| SplitView.Pane.WithValue(pane.Compile()) |],
+                    [||],
+                    [||]
+                )
+            )
+
+        /// <summary>Creates a SplitView widget.</summary>
+        /// <param name="pane">The content of the pane.</param>
+        /// <param name="content">The content to display.</param>
+        static member SplitView(pane: string, content: WidgetBuilder<'msg, #IFabControl>) =
+            WidgetBuilder<'msg, IFabSplitView>(
+                SplitView.WidgetKey,
+                AttributesBundle(
+                    StackList.one(SplitView.PaneString.WithValue(pane)),
+                    [| ContentControl.ContentWidget.WithValue(content.Compile()) |],
+                    [||],
+                    [||]
+                )
+            )
 
         /// <summary>Creates a SplitView widget.</summary>
         /// <param name="pane">The content of the pane.</param>
@@ -121,12 +172,47 @@ type SplitViewModifiers =
     static member inline paneBackground(this: WidgetBuilder<'msg, #IFabSplitView>, value: string) =
         SplitViewModifiers.paneBackground(this, View.SolidColorBrush(value))
 
+    /// <summary>Sets the Pane property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The Pane value.</param>
+    [<Extension>]
+    static member inline pane(this: WidgetBuilder<'msg, #IFabSplitView>, value: WidgetBuilder<'msg, #IFabControl>) =
+        this.AddWidget(SplitView.Pane.WithValue(value.Compile()))
+
+    /// <summary>Sets the Pane property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The Pane value.</param>
+    [<Extension>]
+    static member inline pane(this: WidgetBuilder<'msg, #IFabSplitView>, value: string) =
+        this.AddScalar(SplitView.PaneString.WithValue(value))
+
+    /// <summary>Sets the Pane property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The Pane value.</param>
+    [<Extension>]
+    static member inline pane(this: WidgetBuilder<'msg, #IFabSplitView>, value: obj) =
+        this.AddScalar(SplitView.PaneObject.WithValue(value))
+
     /// <summary>Sets the PanePlacement property.</summary>
     /// <param name="this">Current widget.</param>
     /// <param name="value">The PanePlacement value.</param>
     [<Extension>]
     static member inline panePlacement(this: WidgetBuilder<'msg, #IFabSplitView>, value: SplitViewPanePlacement) =
         this.AddScalar(SplitView.PanePlacement.WithValue(value))
+
+    /// <summary>Sets the PaneTemplate property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The PaneTemplate value.</param>
+    [<Extension>]
+    static member inline paneTemplate(this: WidgetBuilder<'msg, #IFabSplitView>, value: IDataTemplate) =
+        this.AddScalar(SplitView.PaneTemplate.WithValue(value))
+
+    /// <summary>Sets the TemplateSettings property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The TemplateSettings value.</param>
+    [<Extension>]
+    static member inline templateSettings(this: WidgetBuilder<'msg, #IFabSplitView>, value: SplitViewTemplateSettings) =
+        this.AddScalar(SplitView.TemplateSettings.WithValue(value))
 
     /// <summary>Sets the UseLightDismissOverlayMode property.</summary>
     /// <param name="this">Current widget.</param>
@@ -135,14 +221,14 @@ type SplitViewModifiers =
     static member inline useLightDismissOverlayMode(this: WidgetBuilder<'msg, #IFabSplitView>, value: bool) =
         this.AddScalar(SplitView.UseLightDismissOverlayMode.WithValue(value))
 
-    /// <summary>Sets the ClosedPaneWidth event.</summary>
+    /// <summary>Sets the ClosedPaneWidth property.</summary>
     /// <param name="this">Current widget.</param>
     /// <param name="value">The ClosedPaneWidth value.</param>
     [<Extension>]
     static member inline closedPaneWidth(this: WidgetBuilder<'msg, #IFabSplitView>, value: float) =
         this.AddScalar(SplitView.ClosedPaneWidth.WithValue(value))
 
-    /// <summary>Sets the PaneColumnGridLength event.</summary>
+    /// <summary>Sets the PaneColumnGridLength property.</summary>
     /// <param name="this">Current widget.</param>
     /// <param name="value">The PaneColumnGridLength value.</param>
     [<Extension>]
