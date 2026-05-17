@@ -55,7 +55,8 @@ type GlyphRunControl() =
 
         _characters[0] <- c
 
-        let glyphRun = new GlyphRun(_glyphTypeface, _fontSize, ReadOnlyMemory<char>(_characters), _glyphIndices)
+        let glyphRun =
+            new GlyphRun(_glyphTypeface, _fontSize, ReadOnlyMemory<char>(_characters), _glyphIndices)
 
         context.DrawGlyphRun(Brushes.Black, glyphRun)
 
@@ -102,7 +103,8 @@ type GlyphRunGeometryControl() =
 
         _characters[0] <- c
 
-        let glyphRun = new GlyphRun(_glyphTypeface, _fontSize, ReadOnlyMemory<char>(_characters), _glyphIndices)
+        let glyphRun =
+            new GlyphRun(_glyphTypeface, _fontSize, ReadOnlyMemory<char>(_characters), _glyphIndices)
 
         let geometry = glyphRun.BuildGeometry()
 

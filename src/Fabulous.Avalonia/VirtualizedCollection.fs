@@ -42,7 +42,8 @@ type WidgetDataTemplate(node: IViewNode, templateFn: obj -> Widget) as this =
         item
 
 type WidgetTreeDataTemplate(node: IViewNode, childrenFn: obj -> IEnumerable, templateFn: obj -> Widget) as this =
-    inherit FuncTreeDataTemplate(typeof<obj>, System.Func<obj, INameScope, Control>(fun data n -> this.Build(data, n)), System.Func<obj, IEnumerable>(childrenFn))
+    inherit
+        FuncTreeDataTemplate(typeof<obj>, System.Func<obj, INameScope, Control>(fun data n -> this.Build(data, n)), System.Func<obj, IEnumerable>(childrenFn))
 
     member this.Build(data: obj, _: INameScope) =
         templateFn data |> TemplateHelpers.createView node

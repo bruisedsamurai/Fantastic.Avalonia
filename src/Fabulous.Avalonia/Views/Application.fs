@@ -203,8 +203,12 @@ module Application =
     let DisplayEdgeToEdge =
         Attributes.definePropertyWithGetSet
             "Application_DisplayEdgeToEdge"
-            (fun target -> (target :?> FabApplication).InsetsManager.DisplayEdgeToEdgePreference)
-            (fun target value -> (target :?> FabApplication).InsetsManager.DisplayEdgeToEdgePreference <- value)
+            (fun target ->
+                (target :?> FabApplication)
+                    .InsetsManager.DisplayEdgeToEdgePreference)
+            (fun target value ->
+                (target :?> FabApplication)
+                    .InsetsManager.DisplayEdgeToEdgePreference <- value)
 
     let SystemBarColor =
         Attributes.definePropertyWithGetSet

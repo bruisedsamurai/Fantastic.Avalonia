@@ -54,7 +54,8 @@ module DragAndDropPage =
         | DraggedOver of DragEventArgs
         | Drop of DragEventArgs
 
-    let customFormat = DataFormat.CreateStringApplicationFormat("xxx-avalonia-galleryapp-custom")
+    let customFormat =
+        DataFormat.CreateStringApplicationFormat("xxx-avalonia-galleryapp-custom")
 
     let doDrop (e: DragEventArgs) =
         async {
@@ -120,9 +121,7 @@ module DragAndDropPage =
             let dragData = new DataTransfer()
             factory.Invoke(dragData)
 
-            let! result =
-                DragDrop.DoDragDropAsync(args, dragData, effects)
-                |> Async.AwaitTask
+            let! result = DragDrop.DoDragDropAsync(args, dragData, effects) |> Async.AwaitTask
 
             let res =
                 match result with
@@ -177,7 +176,10 @@ module DragAndDropPage =
         | OnPointPressed2 args ->
             args.Handled <- true
             let effects = DragDropEffects.Move
-            let factory = System.Action<DataTransfer>(fun d -> d.Add(DataTransferItem.Create(customFormat, "Test123")))
+
+            let factory =
+                System.Action<DataTransfer>(fun d -> d.Add(DataTransferItem.Create(customFormat, "Test123")))
+
             model, Cmd.OfAsync.msg(doDrag args effects factory BorderPointerPressed.Second)
 
         | OnPointPressed3 args ->

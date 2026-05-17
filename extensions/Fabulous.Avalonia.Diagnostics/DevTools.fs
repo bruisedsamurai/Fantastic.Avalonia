@@ -10,18 +10,22 @@ open Fabulous.Avalonia
 
 module DeveloperTools =
     let AttachDeveloperTools =
-        Attributes.defineProperty "Application_AttachDeveloperTools" (ValueNone, ValueNone) (fun _ (value: Action<DeveloperToolsOptions> voption * Input.KeyGesture voption) ->
-            match Application.Current with
-            | null -> ()
-            | app ->
-                let configure, gesture = value
+        Attributes.defineProperty
+            "Application_AttachDeveloperTools"
+            (ValueNone, ValueNone)
+            (fun _ (value: Action<DeveloperToolsOptions> voption * Input.KeyGesture voption) ->
+                match Application.Current with
+                | null -> ()
+                | app ->
+                    let configure, gesture = value
 
-                if configure.IsSome then
-                    app.AttachDeveloperTools(configure.Value) |> ignore
-                else if gesture.IsSome then
-                    app.AttachDeveloperTools(Action<DeveloperToolsOptions>(fun options -> options.Gesture <- gesture.Value)) |> ignore
-                else
-                    app.AttachDeveloperTools(Action<DeveloperToolsOptions>(ignore)) |> ignore)
+                    if configure.IsSome then
+                        app.AttachDeveloperTools(configure.Value) |> ignore
+                    else if gesture.IsSome then
+                        app.AttachDeveloperTools(Action<DeveloperToolsOptions>(fun options -> options.Gesture <- gesture.Value))
+                        |> ignore
+                    else
+                        app.AttachDeveloperTools(Action<DeveloperToolsOptions>(ignore)) |> ignore)
 
 type DevToolsModifiers =
     /// <summary>Attaches the Avalonia Developer Tools with the specified options.
