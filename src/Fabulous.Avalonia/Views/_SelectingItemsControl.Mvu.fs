@@ -14,6 +14,9 @@ module MvuSelectingItemsControl =
     let SelectedIndexChanged =
         Attributes.Mvu.defineAvaloniaPropertyWithChangedEvent' "SelectingItemsControl_SelectedIndexChanged" SelectingItemsControl.SelectedIndexProperty
 
+    let SelectedValueChanged =
+        Attributes.Mvu.defineAvaloniaPropertyWithChangedEvent' "SelectingItemsControl_SelectedValueChanged" SelectingItemsControl.SelectedValueProperty
+
     let SelectedChanged =
         Attributes.Mvu.defineAvaloniaPropertyWithChangedEvent' "SelectingItemsControl_SelectedChanged" SelectingItemsControl.IsSelectedProperty
 
@@ -32,6 +35,14 @@ type MvuSelectingItemsControlModifiers =
     [<Extension>]
     static member inline onSelectedIndexChanged(this: WidgetBuilder<'msg, #IFabSelectingItemsControl>, index: int, fn: int -> 'msg) =
         this.AddScalar(MvuSelectingItemsControl.SelectedIndexChanged.WithValue(ValueEventData.create index fn))
+
+    /// <summary>Listens to the SelectingItemsControl SelectedValueChanged event.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">Selected value</param>
+    /// <param name="fn">Raised when the control's selected value changes.</param>
+    [<Extension>]
+    static member inline onSelectedValueChanged(this: WidgetBuilder<'msg, #IFabSelectingItemsControl>, value: obj, fn: obj -> 'msg) =
+        this.AddScalar(MvuSelectingItemsControl.SelectedValueChanged.WithValue(ValueEventData.create value fn))
 
 type MvuSelectingItemsControlAttachedModifiers =
     /// <summary>Listens to the SelectingItemsControl SelectedChanged event.</summary>

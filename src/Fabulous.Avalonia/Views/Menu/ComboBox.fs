@@ -2,6 +2,7 @@ namespace Fabulous.Avalonia
 
 open System.Runtime.CompilerServices
 open Avalonia.Controls
+open Avalonia.Controls.Templates
 open Avalonia.Layout
 open Avalonia.Media
 open Fabulous
@@ -17,11 +18,16 @@ module ComboBox =
     let IsDropDownOpen =
         Attributes.defineAvaloniaPropertyWithEquality ComboBox.IsDropDownOpenProperty
 
+    let IsEditable =
+        Attributes.defineAvaloniaPropertyWithEquality ComboBox.IsEditableProperty
+
     let MaxDropDownHeight =
         Attributes.defineAvaloniaPropertyWithEquality ComboBox.MaxDropDownHeightProperty
 
     let PlaceholderText =
         Attributes.defineAvaloniaPropertyWithEquality ComboBox.PlaceholderTextProperty
+
+    let Text = Attributes.defineAvaloniaPropertyWithEquality ComboBox.TextProperty
 
     let PlaceholderForegroundWidget =
         Attributes.defineAvaloniaPropertyWidget ComboBox.PlaceholderForegroundProperty
@@ -34,6 +40,28 @@ module ComboBox =
 
     let VerticalContentAlignment =
         Attributes.defineAvaloniaPropertyWithEquality ComboBox.VerticalContentAlignmentProperty
+
+    let SelectionBoxItem =
+        Attributes.defineAvaloniaPropertyWithEquality ComboBox.SelectionBoxItemProperty
+
+    let SelectionBoxItemWidget =
+        Attributes.defineAvaloniaPropertyWidget ComboBox.SelectionBoxItemProperty
+
+    let SelectionBoxItemTemplate =
+        Attributes.defineAvaloniaPropertyWithEquality ComboBox.SelectionBoxItemTemplateProperty
+
+    let SelectionBoxItemTemplateWidget =
+        Attributes.defineSimpleScalar<obj -> Widget>
+            "ComboBox_SelectionBoxItemTemplate"
+            ScalarAttributeComparers.physicalEqualityCompare
+            (fun _ newValueOpt node ->
+                let comboBox = node.Target :?> ComboBox
+
+                match newValueOpt with
+                | ValueNone -> comboBox.ClearValue(ComboBox.SelectionBoxItemTemplateProperty)
+                | ValueSome template ->
+                    comboBox.SetValue(ComboBox.SelectionBoxItemTemplateProperty, WidgetDataTemplate(node, template))
+                    |> ignore)
 
     let ItemTemplate =
         Attributes.defineSimpleScalar<obj -> Widget> "ComboBox_ItemTemplate" ScalarAttributeComparers.physicalEqualityCompare (fun _ newValueOpt node ->
@@ -71,6 +99,13 @@ type ComboBoxModifiers =
     static member inline isDropDownOpen(this: WidgetBuilder<'msg, #IFabComboBox>, value: bool) =
         this.AddScalar(ComboBox.IsDropDownOpen.WithValue(value))
 
+    /// <summary>Sets the IsEditable property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The IsEditable value.</param>
+    [<Extension>]
+    static member inline isEditable(this: WidgetBuilder<'msg, #IFabComboBox>, value: bool) =
+        this.AddScalar(ComboBox.IsEditable.WithValue(value))
+
     /// <summary>Sets the MaxDropDownHeight property.</summary>
     /// <param name="this">Current widget.</param>
     /// <param name="value">The MaxDropDownHeight value.</param>
@@ -84,6 +119,13 @@ type ComboBoxModifiers =
     [<Extension>]
     static member inline placeholderText(this: WidgetBuilder<'msg, #IFabComboBox>, value: string) =
         this.AddScalar(ComboBox.PlaceholderText.WithValue(value))
+
+    /// <summary>Sets the Text property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The Text value.</param>
+    [<Extension>]
+    static member inline text(this: WidgetBuilder<'msg, #IFabComboBox>, value: string) =
+        this.AddScalar(ComboBox.Text.WithValue(value))
 
     /// <summary>Sets the PlaceholderForeground property.</summary>
     /// <param name="this">Current widget.</param>
@@ -103,14 +145,14 @@ type ComboBoxModifiers =
     /// <param name="this">Current widget.</param>
     /// <param name="value">The PlaceholderForeground value.</param>
     [<Extension>]
-    static member inline placeholderForeground(this: WidgetBuilder<'msg, #IFabComboBoxItem>, value: Color) =
+    static member inline placeholderForeground(this: WidgetBuilder<'msg, #IFabComboBox>, value: Color) =
         ComboBoxModifiers.placeholderForeground(this, View.SolidColorBrush(value))
 
     /// <summary>Sets the PlaceholderForeground property.</summary>
     /// <param name="this">Current widget.</param>
     /// <param name="value">The PlaceholderForeground value.</param>
     [<Extension>]
-    static member inline placeholderForeground(this: WidgetBuilder<'msg, #IFabComboBoxItem>, value: string) =
+    static member inline placeholderForeground(this: WidgetBuilder<'msg, #IFabComboBox>, value: string) =
         ComboBoxModifiers.placeholderForeground(this, View.SolidColorBrush(value))
 
 
@@ -127,6 +169,34 @@ type ComboBoxModifiers =
     [<Extension>]
     static member inline verticalContentAlignment(this: WidgetBuilder<'msg, #IFabComboBox>, value: VerticalAlignment) =
         this.AddScalar(ComboBox.VerticalContentAlignment.WithValue(value))
+
+    /// <summary>Sets the SelectionBoxItem property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionBoxItem value.</param>
+    [<Extension>]
+    static member inline selectionBoxItem(this: WidgetBuilder<'msg, #IFabComboBox>, value: obj) =
+        this.AddScalar(ComboBox.SelectionBoxItem.WithValue(value))
+
+    /// <summary>Sets the SelectionBoxItem property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionBoxItem value.</param>
+    [<Extension>]
+    static member inline selectionBoxItem(this: WidgetBuilder<'msg, #IFabComboBox>, value: WidgetBuilder<'msg, #IFabControl>) =
+        this.AddWidget(ComboBox.SelectionBoxItemWidget.WithValue(value.Compile()))
+
+    /// <summary>Sets the SelectionBoxItemTemplate property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionBoxItemTemplate value.</param>
+    [<Extension>]
+    static member inline selectionBoxItemTemplate(this: WidgetBuilder<'msg, #IFabComboBox>, value: IDataTemplate) =
+        this.AddScalar(ComboBox.SelectionBoxItemTemplate.WithValue(value))
+
+    /// <summary>Sets the SelectionBoxItemTemplate property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="template">The template to render the selection box item with.</param>
+    [<Extension>]
+    static member inline selectionBoxItemTemplate(this: WidgetBuilder<'msg, #IFabComboBox>, template: 'item -> WidgetBuilder<'msg, #IFabControl>) =
+        this.AddScalar(ComboBox.SelectionBoxItemTemplateWidget.WithValue(WidgetHelpers.compileTemplate template))
 
     /// <summary>Sets the ItemTemplate property.</summary>
     /// <param name="this">Current widget.</param>

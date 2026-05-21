@@ -2,6 +2,7 @@ namespace Fabulous.Avalonia
 
 open System.Runtime.CompilerServices
 open Avalonia.Controls.Primitives
+open Avalonia.Data
 open Fabulous
 
 type IFabSelectingItemsControl =
@@ -16,6 +17,12 @@ module SelectingItemsControl =
 
     let SelectedItem =
         Attributes.defineAvaloniaPropertyWithEquality SelectingItemsControl.SelectedItemProperty
+
+    let SelectedValue =
+        Attributes.defineAvaloniaPropertyWithEquality SelectingItemsControl.SelectedValueProperty
+
+    let SelectedValueBinding =
+        Attributes.defineAvaloniaPropertyWithEquality SelectingItemsControl.SelectedValueBindingProperty
 
     let IsTextSearchEnabled =
         Attributes.defineAvaloniaPropertyWithEquality SelectingItemsControl.IsTextSearchEnabledProperty
@@ -47,6 +54,20 @@ type SelectingItemsControlModifiers =
     [<Extension>]
     static member inline selectedItem(this: WidgetBuilder<'msg, #IFabSelectingItemsControl>, value: obj) =
         this.AddScalar(SelectingItemsControl.SelectedItem.WithValue(value))
+
+    /// <summary>Sets the SelectedValue property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectedValue value.</param>
+    [<Extension>]
+    static member inline selectedValue(this: WidgetBuilder<'msg, #IFabSelectingItemsControl>, value: obj) =
+        this.AddScalar(SelectingItemsControl.SelectedValue.WithValue(value))
+
+    /// <summary>Sets the SelectedValueBinding property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectedValueBinding value.</param>
+    [<Extension>]
+    static member inline selectedValueBinding(this: WidgetBuilder<'msg, #IFabSelectingItemsControl>, value: BindingBase) =
+        this.AddScalar(SelectingItemsControl.SelectedValueBinding.WithValue(value))
 
     /// <summary>Sets the IsTextSearchEnabled property.</summary>
     /// <param name="this">Current widget.</param>
