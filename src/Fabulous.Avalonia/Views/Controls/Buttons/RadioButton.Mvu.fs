@@ -9,6 +9,15 @@ module MvuRadioButtonBuilders =
     type Fabulous.Avalonia.View with
 
         /// <summary>Creates a RadioButton widget.</summary>
+        /// <param name="isChecked">Whether the RadioButton is checked.</param>
+        /// <param name="fn">Raised when the RadioButton is clicked.</param>
+        static member RadioButton(isChecked: bool, fn: bool -> 'msg) =
+            WidgetBuilder<'msg, IFabRadioButton>(
+                RadioButton.WidgetKey,
+                MvuToggleButton.CheckedChanged.WithValue(ValueEventData.create isChecked fn)
+            )
+
+        /// <summary>Creates a RadioButton widget.</summary>
         /// <param name="text">The text to display.</param>
         /// <param name="isChecked">Whether the RadioButton is checked.</param>
         /// <param name="fn">Raised when the RadioButton is clicked.</param>
@@ -17,6 +26,16 @@ module MvuRadioButtonBuilders =
                 RadioButton.WidgetKey,
                 ContentControl.ContentString.WithValue(text),
                 MvuToggleButton.CheckedChanged.WithValue(ValueEventData.create isChecked fn)
+            )
+
+        /// <summary>Creates a ThreeStateRadioButton widget.</summary>
+        /// <param name="isChecked">Whether the ThreeStateRadioButton is checked.</param>
+        /// <param name="fn">Raised when the ThreeStateRadioButton is clicked.</param>
+        static member inline ThreeStateRadioButton(isChecked: bool option, fn: bool option -> 'msg) =
+            WidgetBuilder<'msg, IFabRadioButton>(
+                RadioButton.WidgetKey,
+                ToggleButton.IsThreeState.WithValue(true),
+                MvuToggleButton.ThreeStateCheckedChanged.WithValue(ValueEventData.createVOption (ThreeState.fromOption(isChecked)) (ThreeState.toOption >> fn))
             )
 
         /// <summary>Creates a ThreeStateRadioButton widget.</summary>

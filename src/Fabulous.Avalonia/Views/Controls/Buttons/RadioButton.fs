@@ -19,7 +19,7 @@ type RadioButtonAttachedModifiers =
     /// <param name="this">Current widget.</param>
     /// <param name="value">The GroupName value.</param>
     [<Extension>]
-    static member inline groupName(this: WidgetBuilder<'msg, #IFabControl>, value: string) =
+    static member inline groupName(this: WidgetBuilder<'msg, #IFabRadioButton>, value: string) =
         this.AddScalar(RadioButton.GroupName.WithValue(value))
 
     /// <summary>Link a ViewRef to access the direct RadioButton control instance.</summary>
