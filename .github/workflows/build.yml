@@ -1,8 +1,8 @@
 name: Build
 on:
   push:
-    branches: [ 'main' ]
-    paths-ignore: [ 'docs/**' ]
+    branches: ["main"]
+    paths-ignore: ["docs/**"]
 
 permissions: write-all
 
@@ -18,62 +18,69 @@ jobs:
   build:
     runs-on: macos-15
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v4
-    - name: Read last version from CHANGELOG.md
-      id: changelog_reader
-      uses: mindsers/changelog-reader-action@v2
-      with:
-        validation_level: warn
-        path: src/Fabulous.Avalonia/CHANGELOG.md
-    - name: Set nightly version
-      run: |
-        NIGHTLY_VERSION=${{ steps.changelog_reader.outputs.version }}-nightly-${GITHUB_RUN_ID}
-        echo "Nightly version is $NIGHTLY_VERSION"
-        echo "NIGHTLY_VERSION=$NIGHTLY_VERSION" >> "$GITHUB_ENV"
-    - name: Update xcode tools
-      run: sudo xcode-select -s ${XCODE_PATH}
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 10.0.x
-    - name: Install dotnet workload
-      run: dotnet workload restore
-    - name: Install workload wasm
-      run: dotnet workload install wasm-tools
-    - name: Restore
-      run: dotnet restore ${SLN_FILE}
-    - name: Build
-      run: dotnet build ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --no-restore
-    - name: Test
-      run: dotnet test ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --no-build
-    - name: Pack
-      run: |
-        find templates -type f -name template.json | xargs sed -i bak "s/PKG_VERSION/${NIGHTLY_VERSION}/g"
-        dotnet pack ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/${NUPKG_FOLDER}
-        dotnet pack ${TEMPLATE_PROJ} -p:Version=${NIGHTLY_VERSION} -p:IsNightlyBuild=true -c ${CONFIG} --property PackageOutputPath=${PWD}/${NUPKG_FOLDER}
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Packages
-        path: nupkgs/
-    - name: Setup for testing templates
-      run: |
-        LOCAL_NUGET_PATH=$(readlink -f ${NUPKG_FOLDER})
-        dotnet nuget add source $LOCAL_NUGET_PATH --name local
-        dotnet new install Fabulous.Avalonia.Templates::${NIGHTLY_VERSION}
-    - name: Test single project template
-      run: |
-        dotnet new fabulous-avalonia -n SingleProjectTemplate
-        dotnet build SingleProjectTemplate -t:InstallAndroidDependencies -f net10.0-android -p:AndroidSdkDirectory="/Users/runner/Library/Android/sdk" -p:AcceptAndroidSDKLicenses=True -p:ManagePackageVersionsCentrally=false
-        dotnet build SingleProjectTemplate -p:ManagePackageVersionsCentrally=false 
-    - name: Test multi project template
-      run: |
-        dotnet new fabulous-avalonia-multi -n MultiProjectTemplate
-        dotnet build MultiProjectTemplate -p:ManagePackageVersionsCentrally=false
-    - name: Test desktop project template
-      run: |
-        dotnet new fabulous-avalonia-desktop -n DesktopProjectTemplate
-        dotnet build DesktopProjectTemplate -p:ManagePackageVersionsCentrally=false
-    - name: Push
-      run: dotnet nuget push "nupkgs/*" -s https://nuget.pkg.github.com/fabulous-dev/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Read last version from CHANGELOG.md
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          validation_level: warn
+          path: src/Fabulous.Avalonia/CHANGELOG.md
+      - name: Set nightly version
+        run: |
+          NIGHTLY_VERSION=${{ steps.changelog_reader.outputs.version }}-nightly-${GITHUB_RUN_ID}
+          echo "Nightly version is $NIGHTLY_VERSION"
+          echo "NIGHTLY_VERSION=$NIGHTLY_VERSION" >> "$GITHUB_ENV"
+      - name: Update xcode tools
+        run: sudo xcode-select -s ${XCODE_PATH}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Install dotnet workload
+        run: dotnet workload restore
+      - name: Install workload wasm
+        run: dotnet workload install wasm-tools
+      - name: Restore
+        run: dotnet restore ${SLN_FILE}
+      - name: Build
+        run: dotnet build ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --no-restore
+      - name: Test
+        run: dotnet test ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --no-build
+      - name: Pack
+        run: |
+          find templates -type f -name template.json | xargs sed -i bak "s/PKG_VERSION/${NIGHTLY_VERSION}/g"
+          dotnet pack ${SLN_FILE} -p:Version=${NIGHTLY_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/${NUPKG_FOLDER}
+          dotnet pack ${TEMPLATE_PROJ} -p:Version=${NIGHTLY_VERSION} -p:IsNightlyBuild=true -c ${CONFIG} --property PackageOutputPath=${PWD}/${NUPKG_FOLDER}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Packages
+          path: nupkgs/
+      - name: Setup for testing templates
+        run: |
+          LOCAL_NUGET_PATH=$(readlink -f ${NUPKG_FOLDER})
+          dotnet nuget add source $LOCAL_NUGET_PATH --name local
+          dotnet new install Fabulous.Avalonia.Templates::${NIGHTLY_VERSION}
+      - name: Test single project template
+        run: |
+          dotnet new fabulous-avalonia -n SingleProjectTemplate
+          dotnet build SingleProjectTemplate -t:InstallAndroidDependencies -f net10.0-android -p:AndroidSdkDirectory="/Users/runner/Library/Android/sdk" -p:AcceptAndroidSDKLicenses=True -p:ManagePackageVersionsCentrally=false
+          # Build non-iOS target frameworks explicitly. The macos-15 runner ships Xcode 16.4,
+          # while the .NET 10 iOS workload currently requires a newer Xcode.
+          dotnet build SingleProjectTemplate -f net10.0 -p:ManagePackageVersionsCentrally=false
+          dotnet build SingleProjectTemplate -f net10.0-android -p:ManagePackageVersionsCentrally=false
+      - name: Test multi project template
+        run: |
+          dotnet new fabulous-avalonia-multi -n MultiProjectTemplate
+          # Build non-iOS heads explicitly for the same Xcode compatibility reason.
+          dotnet build MultiProjectTemplate/NewApp/NewApp.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/NewApp.Desktop/NewApp.Desktop.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/NewApp.Android/NewApp.Android.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/NewApp.Browser/NewApp.Browser.fsproj -p:ManagePackageVersionsCentrally=false
+      - name: Test desktop project template
+        run: |
+          dotnet new fabulous-avalonia-desktop -n DesktopProjectTemplate
+          dotnet build DesktopProjectTemplate -p:ManagePackageVersionsCentrally=false
+      - name: Push
+        run: dotnet nuget push "nupkgs/*" -s https://nuget.pkg.github.com/fabulous-dev/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
