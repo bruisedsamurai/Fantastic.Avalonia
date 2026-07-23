@@ -3,9 +3,9 @@ namespace Gallery
 open Avalonia.Layout
 open Avalonia
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module GeometriesPage =
     let path =

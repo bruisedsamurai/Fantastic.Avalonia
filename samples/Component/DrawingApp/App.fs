@@ -3,13 +3,13 @@ namespace DrawingApp
 open Avalonia
 open Avalonia.Controls
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Themes.Fluent
 open Avalonia.Layout
 open Avalonia.Markup.Xaml.Converters
 open Avalonia.Media
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open type Fabulous.Context
 
 module ColorPicker =

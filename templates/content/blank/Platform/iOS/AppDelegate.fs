@@ -5,7 +5,7 @@ open UIKit
 
 open Avalonia
 open Avalonia.iOS
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Foundation
 open NewApp
 open UIKit

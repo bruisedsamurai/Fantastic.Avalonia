@@ -4,10 +4,10 @@ open System
 open System.Diagnostics
 open Avalonia.Controls
 open Avalonia.Controls.Selection
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 type Country(name, region, population, area, density: float, coast: float, migration, infantMorality, gdp, literacy: float, phones, birth, death) =
     member val Name = name with get, set

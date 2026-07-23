@@ -8,9 +8,9 @@ open Avalonia.Input
 open Avalonia.Media
 open Avalonia.Media.Immutable
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open Fabulous.StackAllocatedCollections.StackList
 
 type PointerInfo() =
@@ -103,7 +103,7 @@ module PointerContacts =
 
 [<AutoOpen>]
 module PointerContactsTabBuilders =
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member PointerContactsTab() =
             WidgetBuilder<'msg, IFabPointerContacts>(PointerContacts.WidgetKey)

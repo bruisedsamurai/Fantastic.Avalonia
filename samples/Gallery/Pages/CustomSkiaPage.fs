@@ -7,7 +7,7 @@ open Avalonia.Controls
 open Avalonia.Media
 open Avalonia.Rendering.SceneGraph
 open Avalonia.Skia
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 open Fabulous.StackAllocatedCollections.StackList
 open SkiaSharp
@@ -15,7 +15,7 @@ open SkiaSharp
 #nowarn "0044"
 
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 type CustomDrawOp(bounds: Rect, noSkia: GlyphRun) =
     let mutable _noSkia = null
@@ -139,7 +139,7 @@ module CustomSkiaControl =
 [<AutoOpen>]
 module CustomSkiaBuilders =
 
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member CustomSkiaControl() =
             WidgetBuilder<'msg, IFabCustomSkiaControl>(CustomSkiaControl.WidgetKey)

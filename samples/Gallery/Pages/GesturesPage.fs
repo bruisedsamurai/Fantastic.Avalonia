@@ -12,9 +12,9 @@ open Avalonia.LogicalTree
 open Avalonia.Media
 open Avalonia.Rendering.Composition
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 #nowarn "44" // warning FS1182: The value is not used.
 

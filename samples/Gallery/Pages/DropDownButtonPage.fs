@@ -5,10 +5,10 @@ open Avalonia.Controls
 open Avalonia.Input
 open Avalonia.Interactivity
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module DropDownButtonPage =
     type Model = { Count: int }

@@ -10,10 +10,10 @@ open Avalonia.Interactivity
 open Avalonia.Media
 open Avalonia.OpenGL
 open Avalonia.OpenGL.Controls
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 open Microsoft.FSharp.NativeInterop
 
@@ -398,7 +398,7 @@ module OpenGlPageControl =
 
 [<AutoOpen>]
 module OpenGLWidgetBuilders =
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member OpenGlPageControl(yaw: float, pitch: float, roll: float, disco: float) =
             WidgetBuilder<'msg, IFabMvuOpenGlPageControl>(OpenGlPageControl.WidgetKey, OpenGlPageControl.Data.WithValue(struct (yaw, pitch, roll, disco)))

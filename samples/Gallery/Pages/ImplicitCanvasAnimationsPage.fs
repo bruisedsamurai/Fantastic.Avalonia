@@ -12,7 +12,7 @@ open Avalonia.Rendering.Composition
 open Avalonia.Rendering.Composition.Animations
 open Avalonia.Threading
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
 type CanvasItem() as this =
     inherit Border()
@@ -64,7 +64,7 @@ type CanvasItem() as this =
             Canvas.SetTop(this, top)
         | _ -> ()
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ImplicitCanvasAnimationsPage =
     type Model =

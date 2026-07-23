@@ -2,7 +2,7 @@ namespace Gallery
 
 
 open Fabulous
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module Cmd =
     let perform fn : Cmd<'msg> = [ (fun _ -> fn()) ]

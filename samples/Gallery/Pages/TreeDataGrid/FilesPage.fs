@@ -8,10 +8,10 @@ open System.Runtime.InteropServices
 open Avalonia.Controls
 open Avalonia.Controls.Selection
 open Avalonia.Layout
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module FilesPage =
 

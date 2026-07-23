@@ -6,10 +6,10 @@ open Avalonia.Controls.Primitives.PopupPositioning
 open Avalonia.Interactivity
 open Avalonia.Media
 open Avalonia.Controls
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ToolTipPage =
     type Model = { IsOpen: bool }

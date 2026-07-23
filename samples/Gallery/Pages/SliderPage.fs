@@ -5,10 +5,10 @@ open System
 open System.Diagnostics
 open Avalonia.Controls
 open Avalonia.Layout
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module SliderPage =
     type Model =

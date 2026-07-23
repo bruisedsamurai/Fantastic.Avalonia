@@ -5,10 +5,10 @@ open Avalonia.Controls
 open Avalonia.Media
 open Avalonia.Styling
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Themes.Fluent
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open type Fabulous.Context
 
 type Player =

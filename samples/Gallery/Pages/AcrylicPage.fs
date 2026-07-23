@@ -8,8 +8,8 @@ open Avalonia.Layout
 open Avalonia.Media
 
 open Fabulous
-open Fabulous.Avalonia
-open type Fabulous.Avalonia.View
+open Fantastic.Avalonia
+open type Fantastic.Avalonia.View
 
 module Common =
     let acrylicBorderStyle1 (this: WidgetBuilder<'msg, #IFabExperimentalAcrylicBorder>) =

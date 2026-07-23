@@ -6,7 +6,7 @@ open TicTacToe
 open UIKit
 
 open Avalonia.iOS
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
 [<Register(nameof AppDelegate)>]
 type AppDelegate() =

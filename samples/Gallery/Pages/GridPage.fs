@@ -4,9 +4,9 @@ open System.Diagnostics
 open Avalonia.Layout
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module GridPage =
 

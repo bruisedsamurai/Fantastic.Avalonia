@@ -6,7 +6,7 @@ open Android.Content.PM
 open Android.Runtime
 open Avalonia
 open Avalonia.Android
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open GameOfLife
 
 [<Activity(Label = "GameOfLife.Android",

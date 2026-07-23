@@ -5,9 +5,9 @@ open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Themes.Fluent
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 /// This is the root of the app
 module App =

@@ -1,6 +1,6 @@
-# Templates for Fabulous.Avalonia
+# Templates for Fantastic.Avalonia
 
-Fabulous.Avalonia brings the great development experience of Fabulous to Avalonia, allowing you to take advantage of the latest cross-platform UI framework from Microsoft with a tailored declarative UI DSL and clean architecture.
+Fantastic.Avalonia brings the great development experience of Fabulous to Avalonia, allowing you to take advantage of the latest cross-platform UI framework from Microsoft with a tailored declarative UI DSL and clean architecture.
 
 Deploy to any platform supported by Avalonia, such as Android, iOS, macOS, Windows, Linux and more!
 
@@ -9,17 +9,17 @@ Deploy to any platform supported by Avalonia, such as Android, iOS, macOS, Windo
 Using the dotnet CLI, install the templates:
 
 ```sh
-dotnet new install Fabulous.Avalonia.Templates
+dotnet new install Fantastic.Avalonia.Templates
 ```
 
-Then, you will be able to create new Fabulous.Avalonia projects with `dotnet new`:
+Then, you will be able to create new Fantastic.Avalonia projects with `dotnet new`:
 
 #### Single Project
 
 Single project takes the platform-specific development experiences and abstracts them into a single shared project that can target Android, iOS, Desktop.
 
 ```sh
-dotnet new fabulous-avalonia -n MyApp
+dotnet new fantastic-avalonia -n MyApp
 ```
 
 - MyApp
@@ -35,7 +35,7 @@ Note: Browser is not supported in single project template.
 Multi project takes the platform-specific development and abstracts them into a multiple projects that can target Android, iOS, Desktop, Browser.
 
 ```sh
-dotnet new fabulous-avalonia-multi -n MyApp
+dotnet new fantastic-avalonia-multi -n MyApp
 ```
 
 - MyApp

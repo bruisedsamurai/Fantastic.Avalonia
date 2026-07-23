@@ -9,11 +9,11 @@ open Avalonia.Interactivity
 open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Input
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ThumbPage =
     type Model = { LeftOffset: float; TopOffset: float }

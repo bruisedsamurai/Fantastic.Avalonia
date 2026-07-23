@@ -7,10 +7,10 @@ open Avalonia.Controls.Notifications
 open Avalonia.Input
 open Avalonia.Input.Platform
 open Avalonia.Platform.Storage
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ClipboardPage =
     type Model = { ClipboardContentText: string }

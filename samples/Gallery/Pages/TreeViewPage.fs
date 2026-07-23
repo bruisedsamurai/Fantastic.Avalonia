@@ -1,8 +1,8 @@
 namespace Gallery
 
 
-open Fabulous.Avalonia
-open type Fabulous.Avalonia.View
+open Fantastic.Avalonia
+open type Fantastic.Avalonia.View
 
 module TreeViewPage =
     let view () =

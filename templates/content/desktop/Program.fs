@@ -2,7 +2,7 @@ namespace NewApp
 
 open System
 open Avalonia
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
 module Program =
 

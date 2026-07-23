@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/extensions/">
+    <Project Path="extensions/Fantastic.Avalonia.ColorPicker/Fantastic.Avalonia.ColorPicker.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.DataGrid/Fantastic.Avalonia.DataGrid.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.Diagnostics/Fantastic.Avalonia.Diagnostics.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.ItemsRepeater/Fantastic.Avalonia.ItemsRepeater.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.TreeDataGrid/Fantastic.Avalonia.TreeDataGrid.fsproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Fantastic.Avalonia/Fantastic.Avalonia.fsproj" />
+  </Folder>
+</Solution>

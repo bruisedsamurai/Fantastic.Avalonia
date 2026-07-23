@@ -2,10 +2,10 @@ namespace MultiWindow
 
 open System.Diagnostics
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Themes.Fluent
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module FirstWindow =
     type Model =

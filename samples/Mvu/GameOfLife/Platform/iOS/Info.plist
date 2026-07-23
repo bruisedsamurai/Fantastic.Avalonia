@@ -5,7 +5,7 @@
         <key>CFBundleDisplayName</key>
         <string>GameOfLife</string>
         <key>CFBundleIdentifier</key>
-        <string>org.fabulous.avalonia.GameOfLife</string>
+        <string>org.fantastic.avalonia.GameOfLife</string>
         <key>CFBundleShortVersionString</key>
         <string>1.0</string>
         <key>CFBundleVersion</key>

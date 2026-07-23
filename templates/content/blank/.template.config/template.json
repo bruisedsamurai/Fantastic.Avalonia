@@ -4,10 +4,10 @@
     "Fabulous",
     "Avalonia"
   ],
-  "name": "Fabulous Avalonia Blank",
-  "groupIdentity": "Fabulous.Avalonia.App.Blank",
-  "identity": "Fabulous.Avalonia.Blank",
-  "shortName": "fabulous-avalonia",
+  "name": "Fantastic Avalonia Blank",
+  "groupIdentity": "Fantastic.Avalonia.App.Blank",
+  "identity": "Fantastic.Avalonia.Blank",
+  "shortName": "fantastic-avalonia",
   "tags": {
     "language": "F#",
     "type": "project"
@@ -46,10 +46,10 @@
       "replaces": "FabulousPkgVersion",
       "defaultValue": "3.0.0-pre22"
     },
-    "FabulousAvaloniaPkgVersion": {
+    "FantasticAvaloniaPkgVersion": {
       "type": "parameter",
       "dataType": "string",
-      "replaces": "FabulousAvaloniaPkgVersion",
+      "replaces": "FantasticAvaloniaPkgVersion",
       "defaultValue": "PKG_VERSION"
     },
     "FSharpCorePkgVersion": {
@@ -62,25 +62,25 @@
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaAndroidPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     },
     "AvaloniaDesktopPkgVersion": {
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaDesktopPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     },
     "AvaloniaiOSPkgVersion": {
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaiOSPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     },
     "AvaloniaThemesFluentPkgVersion": {
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaThemesFluentPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     }
   }
 }

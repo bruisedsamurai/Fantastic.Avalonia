@@ -1,9 +1,9 @@
 namespace NavigationSample
 
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module PageC =
     type Model =

@@ -8,9 +8,9 @@ permissions: write-all
 
 env:
   CONFIG: Release
-  SLN_FILE: Fabulous.Avalonia.NoSamples.slnx
-  TEMPLATE_PROJ: templates/Fabulous.Avalonia.Templates.proj
-  TEMPLATE_PKG: nupkgs/Fabulous.Avalonia.Templates
+  SLN_FILE: Fantastic.Avalonia.NoSamples.slnx
+  TEMPLATE_PROJ: templates/Fantastic.Avalonia.Templates.proj
+  TEMPLATE_PKG: nupkgs/Fantastic.Avalonia.Templates
   NUPKG_FOLDER: nupkgs
   XCODE_PATH: /Applications/Xcode_16.4.app/Contents/Developer
 
@@ -25,7 +25,7 @@ jobs:
         uses: mindsers/changelog-reader-action@v2
         with:
           validation_level: warn
-          path: src/Fabulous.Avalonia/CHANGELOG.md
+          path: src/Fantastic.Avalonia/CHANGELOG.md
       - name: Set nightly version
         run: |
           NIGHTLY_VERSION=${{ steps.changelog_reader.outputs.version }}-nightly-${GITHUB_RUN_ID}
@@ -61,10 +61,10 @@ jobs:
         run: |
           LOCAL_NUGET_PATH=$(readlink -f ${NUPKG_FOLDER})
           dotnet nuget add source $LOCAL_NUGET_PATH --name local
-          dotnet new install Fabulous.Avalonia.Templates::${NIGHTLY_VERSION}
+          dotnet new install Fantastic.Avalonia.Templates::${NIGHTLY_VERSION}
       - name: Test single project template
         run: |
-          dotnet new fabulous-avalonia -n SingleProjectTemplate
+          dotnet new fantastic-avalonia -n SingleProjectTemplate
           dotnet build SingleProjectTemplate -t:InstallAndroidDependencies -f net10.0-android -p:AndroidSdkDirectory="/Users/runner/Library/Android/sdk" -p:AcceptAndroidSDKLicenses=True -p:ManagePackageVersionsCentrally=false
           # Build non-iOS target frameworks explicitly. The macos-15 runner ships Xcode 16.4,
           # while the .NET 10 iOS workload currently requires a newer Xcode.
@@ -72,7 +72,7 @@ jobs:
           dotnet build SingleProjectTemplate -f net10.0-android -p:ManagePackageVersionsCentrally=false
       - name: Test multi project template
         run: |
-          dotnet new fabulous-avalonia-multi -n MultiProjectTemplate
+          dotnet new fantastic-avalonia-multi -n MultiProjectTemplate
           # Build non-iOS heads explicitly for the same Xcode compatibility reason.
           dotnet build MultiProjectTemplate/NewApp/NewApp.fsproj -p:ManagePackageVersionsCentrally=false
           dotnet build MultiProjectTemplate/NewApp.Desktop/NewApp.Desktop.fsproj -p:ManagePackageVersionsCentrally=false
@@ -80,7 +80,7 @@ jobs:
           dotnet build MultiProjectTemplate/NewApp.Browser/NewApp.Browser.fsproj -p:ManagePackageVersionsCentrally=false
       - name: Test desktop project template
         run: |
-          dotnet new fabulous-avalonia-desktop -n DesktopProjectTemplate
+          dotnet new fantastic-avalonia-desktop -n DesktopProjectTemplate
           dotnet build DesktopProjectTemplate -p:ManagePackageVersionsCentrally=false
       - name: Push
-        run: dotnet nuget push "nupkgs/*" -s https://nuget.pkg.github.com/fabulous-dev/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        run: dotnet nuget push "nupkgs/*" -s https://nuget.pkg.github.com/bruisedsamurai/index.json -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate

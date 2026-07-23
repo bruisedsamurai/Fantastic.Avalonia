@@ -5,7 +5,7 @@
         <key>CFBundleDisplayName</key>
         <string>DrawingApp</string>
         <key>CFBundleIdentifier</key>
-        <string>org.fabulous.avalonia.DrawingApp</string>
+        <string>org.fantastic.avalonia.DrawingApp</string>
         <key>CFBundleShortVersionString</key>
         <string>1.0</string>
         <key>CFBundleVersion</key>

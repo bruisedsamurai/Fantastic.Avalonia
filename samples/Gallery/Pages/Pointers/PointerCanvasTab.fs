@@ -10,9 +10,9 @@ open Avalonia.Input
 open Avalonia.Media
 open Avalonia.Threading
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 [<AllowNullLiteral>]
 type CanvasPoint(brush, point, radius, pressure) =
@@ -225,7 +225,7 @@ module PointerCanvas =
 
 [<AutoOpen>]
 module PointerCanvasTabBuilders =
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member PointerCanvas(drawingPoint: bool, threadSleep: int, fn: string -> 'msg) =
             WidgetBuilder<'msg, IFabPointerCanvas>(

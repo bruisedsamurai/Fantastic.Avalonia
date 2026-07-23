@@ -6,12 +6,12 @@ open Avalonia.Animation
 open Avalonia.Controls
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 open Avalonia.Animation.Easings
 
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module TransitioningContentControlPage =
     type Model =

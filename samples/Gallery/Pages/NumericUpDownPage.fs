@@ -7,11 +7,11 @@ open Avalonia
 open Avalonia.Controls
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 open Avalonia.Data.Converters
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module NumericUpDownPage =
     type FormatObject = { Value: string; Name: string }

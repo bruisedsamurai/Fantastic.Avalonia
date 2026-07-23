@@ -3,11 +3,11 @@ namespace Gallery
 open System.Diagnostics
 open Avalonia.Interactivity
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 open Avalonia.Controls
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module SelectableTextBlockPage =
     type Model = { Text: string }

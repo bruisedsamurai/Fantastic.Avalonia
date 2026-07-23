@@ -9,8 +9,8 @@ open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
-open type Fabulous.Avalonia.View
+open Fantastic.Avalonia
+open type Fantastic.Avalonia.View
 
 [<AutoOpen>]
 module AutoCompleteBoxCommon =

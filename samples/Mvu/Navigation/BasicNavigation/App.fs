@@ -4,9 +4,9 @@ open System.Diagnostics
 open Avalonia.Controls
 open Avalonia.Themes.Fluent
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 /// The most basic navigation with Fabulous is done by swapping widgets.
 ///

@@ -4,7 +4,7 @@ open System.Runtime.Versioning
 open Avalonia
 open Avalonia.Browser
 open Avalonia.Themes.Fluent
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open NewApp
 
 

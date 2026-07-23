@@ -5,7 +5,7 @@
         <key>CFBundleDisplayName</key>
         <string>Tetris</string>
         <key>CFBundleIdentifier</key>
-        <string>org.fabulous.avalonia.Tetris</string>
+        <string>org.fantastic.avalonia.Tetris</string>
         <key>CFBundleShortVersionString</key>
         <string>1.0</string>
         <key>CFBundleVersion</key>

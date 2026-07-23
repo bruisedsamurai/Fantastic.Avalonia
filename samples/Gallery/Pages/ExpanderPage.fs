@@ -5,10 +5,10 @@ open System.Diagnostics
 open Avalonia.Animation
 open Avalonia.Controls
 open Avalonia.Interactivity
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ExpanderPage =
     type Model = { IsExpanded: bool }

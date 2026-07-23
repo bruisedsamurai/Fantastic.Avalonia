@@ -5,9 +5,9 @@ open Avalonia.Controls
 open Avalonia.Controls.Primitives
 open Avalonia.Layout
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module LabelPage =
     type Model =

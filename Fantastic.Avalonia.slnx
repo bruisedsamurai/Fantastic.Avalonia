@@ -1,0 +1,40 @@
+<Solution>
+  <Folder Name="/extensions/">
+    <Project Path="extensions/Fantastic.Avalonia.ColorPicker/Fantastic.Avalonia.ColorPicker.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.DataGrid/Fantastic.Avalonia.DataGrid.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.Diagnostics/Fantastic.Avalonia.Diagnostics.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.ItemsRepeater/Fantastic.Avalonia.ItemsRepeater.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.Labs/Fantastic.Avalonia.Labs.fsproj" />
+    <Project Path="extensions/Fantastic.Avalonia.TreeDataGrid/Fantastic.Avalonia.TreeDataGrid.fsproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <File Path="samples/Fantastic.Avalonia.Samples.targets" />
+    <Project Path="samples/ControlSamples/ControlSamples.csproj" />
+    <Project Path="samples/Gallery/Gallery.fsproj">
+      <Deploy />
+    </Project>
+    <Project Path="samples/Playground/Playground.fsproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <File Path="Fantastic.Avalonia.props" />
+    <Project Path="src/Fantastic.Avalonia.Tests/Fantastic.Avalonia.Tests.fsproj" />
+    <Project Path="src/Fantastic.Avalonia/Fantastic.Avalonia.fsproj" />
+  </Folder>
+  <Folder Name="/_Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="build.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="extensions/Fantastic.Avalonia.ColorPicker/CHANGELOG.md" />
+    <File Path="extensions/Fantastic.Avalonia.DataGrid/CHANGELOG.md" />
+    <File Path="extensions/Fantastic.Avalonia.Diagnostics/CHANGELOG.md" />
+    <File Path="extensions/Fantastic.Avalonia.ItemsRepeater/CHANGELOG.md" />
+    <File Path="extensions/Fantastic.Avalonia.Labs/CHANGELOG.md" />
+    <File Path="extensions/Fantastic.Avalonia.TreeDataGrid/CHANGELOG.md" />
+    <File Path="pull_request.yml" />
+    <File Path="README.md" />
+    <File Path="release.yml" />
+    <File Path="src/Fantastic.Avalonia/CHANGELOG.md" />
+    <File Path="templates/CHANGELOG.md" />
+  </Folder>
+</Solution>

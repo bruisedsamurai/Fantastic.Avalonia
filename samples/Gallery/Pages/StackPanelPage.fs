@@ -3,10 +3,10 @@ namespace Gallery
 open System.Diagnostics
 open Avalonia.Media
 open Avalonia.Layout
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module StackPanelPage =
     type Model =

@@ -3,7 +3,7 @@ namespace TestableApp.Desktop
 open System
 open Avalonia
 
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open TestableApp
 
 module Program =

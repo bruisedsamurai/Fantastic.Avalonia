@@ -10,10 +10,10 @@ open Avalonia.Input
 open Avalonia.Media
 open Avalonia.Media.Imaging
 open Avalonia.Platform
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module CursorPage =
     type StandardCursorModel(type': StandardCursorType) =

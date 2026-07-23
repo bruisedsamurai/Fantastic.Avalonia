@@ -1,10 +1,10 @@
 namespace Gallery
 
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Controls
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module DockPanelPage =
     let view () =

@@ -4,12 +4,12 @@ open Avalonia
 open Avalonia.Controls
 open Avalonia.Media
 open Avalonia.Media.Immutable
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous.StackAllocatedCollections.StackList
 open Avalonia.Media.Imaging
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 type PathMeasurementControl() =
     inherit Control()
@@ -88,7 +88,7 @@ module PathMeasurement =
 [<AutoOpen>]
 module PathMeasurementBuilders =
 
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member PathMeasurement() =
             WidgetBuilder<'msg, IFabPathMeasurement>(PathMeasurement.WidgetKey)

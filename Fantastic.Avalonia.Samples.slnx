@@ -1,0 +1,35 @@
+<Solution>
+  <Folder Name="/Component/">
+    <Project Path="samples/Component/CounterApp/CounterApp.fsproj" />
+    <Project Path="samples/Component/DrawingApp/DrawingApp.fsproj" />
+    <Project Path="samples/Component/MultiWindow/MultiWindow.fsproj" />
+    <Project Path="samples/Component/Tetris/Tetris.fsproj" />
+    <Project Path="samples/Component/TicTacToe/TicTacToe.fsproj" />
+  </Folder>
+  <Folder Name="/Component/Navigation/">
+    <Project Path="samples/Component/Navigation/BasicNavigation/BasicNavigation.fsproj" />
+  </Folder>
+  <Folder Name="/Mvu/">
+    <Project Path="samples/Mvu/CounterApp/CounterApp.fsproj" />
+    <Project Path="samples/Mvu/DrawingApp/DrawingApp.fsproj" />
+    <Project Path="samples/Mvu/GameOfLife/GameOfLife.fsproj" />
+    <Project Path="samples/Mvu/GitHubClient/GitHubClient.fsproj" />
+    <Project Path="samples/Mvu/MultiWindow/MultiWindow.fsproj" />
+    <Project Path="samples/Mvu/Tetris/Tetris.fsproj" />
+    <Project Path="samples/Mvu/TicTacToe/TicTacToe.fsproj" />
+  </Folder>
+  <Folder Name="/Mvu/Navigation/">
+    <Project Path="samples/Mvu/Navigation/BasicNavigation/BasicNavigation.fsproj" />
+  </Folder>
+  <Folder Name="/_Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="extensions/Fantastic.Avalonia.Labs/Fantastic.Avalonia.Labs.fsproj" />
+  <Project Path="samples/TestableApp.Headless.XUnit/TestableApp.Headless.XUnit.fsproj" />
+  <Project Path="samples/TestableApp.UnitTests/TestableApp.UnitTests.fsproj" />
+  <Project Path="samples/TestableApp/TestableApp.fsproj" />
+  <Project Path="src/Fantastic.Avalonia/Fantastic.Avalonia.fsproj" />
+</Solution>

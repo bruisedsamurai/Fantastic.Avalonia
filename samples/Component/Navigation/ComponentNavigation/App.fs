@@ -2,9 +2,9 @@ namespace ComponentNavigation
 
 open Avalonia.Themes.Fluent
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open type Fabulous.Context
 
 /// This is the root of the app

@@ -4,10 +4,10 @@
     "Fabulous",
     "Avalonia"
   ],
-  "name": "Fabulous Avalonia Desktop",
-  "groupIdentity": "Fabulous.Avalonia.App.Desktop",
-  "identity": "Fabulous.Avalonia.Desktop",
-  "shortName": "fabulous-avalonia-desktop",
+  "name": "Fantastic Avalonia Desktop",
+  "groupIdentity": "Fantastic.Avalonia.App.Desktop",
+  "identity": "Fantastic.Avalonia.Desktop",
+  "shortName": "fantastic-avalonia-desktop",
   "tags": {
     "language": "F#",
     "type": "project"
@@ -46,10 +46,10 @@
       "replaces": "FabulousPkgVersion",
       "defaultValue": "3.0.0-pre22"
     },
-    "FabulousAvaloniaPkgVersion": {
+    "FantasticAvaloniaPkgVersion": {
       "type": "parameter",
       "dataType": "string",
-      "replaces": "FabulousAvaloniaPkgVersion",
+      "replaces": "FantasticAvaloniaPkgVersion",
       "defaultValue": "PKG_VERSION"
     },
     "FSharpCorePkgVersion": {
@@ -62,13 +62,13 @@
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaDesktopPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     },
     "AvaloniaThemesFluentPkgVersion": {
       "type": "parameter",
       "dataType": "string",
       "replaces": "AvaloniaThemesFluentPkgVersion",
-      "defaultValue": "12.0.1"
+      "defaultValue": "12.1.0"
     }
   }
 }

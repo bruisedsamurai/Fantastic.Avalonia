@@ -3,9 +3,9 @@ namespace NavigationSample
 open Avalonia.Controls
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 /// Each page are "isolated". They have their own MVU loop and own types.
 /// The only dependency they receive from outside is the NavigationController, which is passed to the update function.

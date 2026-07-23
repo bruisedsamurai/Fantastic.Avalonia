@@ -1,10 +1,10 @@
 namespace Gallery
 
 open System.Diagnostics
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module RadioButtonPage =
     type Model =

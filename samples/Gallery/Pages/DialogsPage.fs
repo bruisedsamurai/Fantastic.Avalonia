@@ -8,10 +8,10 @@ open System.Reflection
 open Avalonia
 open Avalonia.Interactivity
 open Avalonia.Platform.Storage
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 open Gallery
 

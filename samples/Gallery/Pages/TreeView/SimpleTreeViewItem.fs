@@ -5,11 +5,11 @@ open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open Fabulous.Avalonia.Expander
-open type Fabulous.Avalonia.View
+open Fantastic.Avalonia.Expander
+open type Fantastic.Avalonia.View
 
 module SimpleTreeViewItem =
     type Node =

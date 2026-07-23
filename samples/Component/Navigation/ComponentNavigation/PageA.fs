@@ -2,9 +2,9 @@ namespace ComponentNavigation
 
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open type Fabulous.Context
 
 /// Each page is "isolated". They have their own MVU loop and own types.

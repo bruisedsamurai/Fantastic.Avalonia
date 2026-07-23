@@ -70,17 +70,17 @@ and it will be automatically reflected in the PR.
    [file a bug or feature report][GitHub issue], so that we can discuss what direction to follow.
 - [Fork the project][fork guide] on GitHub.
 - Clone the forked repository to your local development machine
-   (e.g. `git clone git@github.com:<YOUR_GITHUB_USER>/Fabulous.Avalonia.git`).
+   (e.g. `git clone git@github.com:<YOUR_GITHUB_USER>/Fantastic.Avalonia.git`).
 
 
 ### Environment Setup
 
-To build Fabulous.Avalonia, you will need to install:
+To build Fantastic.Avalonia, you will need to install:
 - the [.NET 7.0 SDK]
 - the iOS and Android workloads by executing at the root of the project the following command: `dotnet workload restore`
 - an IDE of your preference between: Visual Studio (Windows and macOS) or [JetBrains Rider]
 
-Once everything is set up, you can either open the Fabulous.Avalonia.slnx file at the root with your preferred IDE and build the solution or execute the command `dotnet build Fabulous.Avalonia.slnx`.
+Once everything is set up, you can either open the Fantastic.Avalonia.slnx file at the root with your preferred IDE and build the solution or execute the command `dotnet build Fantastic.Avalonia.slnx`.
 
 
 ### Performing changes
@@ -94,7 +94,7 @@ Once everything is set up, you can either open the Fabulous.Avalonia.slnx file a
 
 ### Open a pull request
 
-Go to the [pull request page of Fabulous.Avalonia][PRs] and in the top
+Go to the [pull request page of Fantastic.Avalonia][PRs] and in the top
 of the page it will ask you if you want to open a pull request from your newly created branch.
 
 The title of the pull request should be descriptive of the work you did.
@@ -102,7 +102,7 @@ The title of the pull request should be descriptive of the work you did.
 
 ## Maintainers
 
-These instructions are for the maintainers of Fabulous.Avalonia.
+These instructions are for the maintainers of Fantastic.Avalonia.
 
 
 ### Merging a pull request
@@ -126,10 +126,10 @@ There are a few things to think about when doing a release:
 - The release pipeline will need to be approved by one of the maintainers with release rights.
 
 
-[GitHub issue]: https://github.com/fabulous-dev/Fabulous.Avalonia/issues
-[GitHub issues]: https://github.com/fabulous-dev/Fabulous.Avalonia/issues
-[GitHub releases page]: https://github.com/fabulous-dev/Fabulous.Avalonia/releases/new
-[PRs]: https://github.com/fabulous-dev/Fabulous.Avalonia/pulls
+[GitHub issue]: https://github.com/bruisedsamurai/Fantastic.Avalonia/issues
+[GitHub issues]: https://github.com/bruisedsamurai/Fantastic.Avalonia/issues
+[GitHub releases page]: https://github.com/bruisedsamurai/Fantastic.Avalonia/releases/new
+[PRs]: https://github.com/bruisedsamurai/Fantastic.Avalonia/pulls
 [fork guide]: https://docs.github.com/en/get-started/quickstart/contributing-to-projects
 [Discord]: https://discord.gg/bpTJMbSSYK
 [.NET 7.0 SDK]: https://dotnet.microsoft.com/en-us/download

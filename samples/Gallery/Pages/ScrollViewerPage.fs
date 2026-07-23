@@ -5,10 +5,10 @@ open Avalonia.Controls
 open Avalonia.Controls.Primitives
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ScrollViewerPage =
     type Model =

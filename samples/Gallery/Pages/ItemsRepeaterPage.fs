@@ -4,10 +4,10 @@ open Avalonia
 open Avalonia.Controls.Primitives
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open System.Collections.ObjectModel
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ItemsRepeaterPage =
     type Crockery = { Title: string; Number: int }

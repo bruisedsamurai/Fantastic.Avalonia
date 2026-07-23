@@ -4,7 +4,7 @@ open System.Runtime.CompilerServices
 open Avalonia.Media
 open Controls.HamburgerMenu
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Controls
 
 module Paths =
@@ -39,7 +39,7 @@ module HamburgerMenu =
 [<AutoOpen>]
 module HamburgerMenuBuilders =
 
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member HamburgerMenu() =
             CollectionBuilder<'msg, IFabHamburgerMenu, IFabTabItem>(HamburgerMenu.WidgetKey, ItemsControl.Items)
@@ -63,11 +63,11 @@ type HamburgerMenuModifiers =
         this.AddScalar(HamburgerMenu.ExpandedModeThresholdWidth.WithValue(value))
 
 open Avalonia.Layout
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 [<AutoOpen>]
 module CustomNotificationBuilders =
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member InlinedYesNoQuestion(title: string, message: string, yesCommand: 'msg, noCommand: 'msg) =
             Border(

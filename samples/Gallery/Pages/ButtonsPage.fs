@@ -4,10 +4,10 @@ open System.Diagnostics
 open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Styling
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ButtonsPage =
     type Model = { IsVisited: bool }

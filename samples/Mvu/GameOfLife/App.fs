@@ -7,10 +7,10 @@ open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Threading
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Themes.Fluent
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 // Credits to https://github.com/fsprojects/Avalonia.FuncUI GameOfLife sample
 

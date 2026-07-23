@@ -5,10 +5,10 @@ open Avalonia.Headless
 open Avalonia.Headless.XUnit
 open Avalonia.Input
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Xunit
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module FabTests =
     /// It takes the root of the widget tree and create the corresponding Avalonia node, and recursively creating all children nodes

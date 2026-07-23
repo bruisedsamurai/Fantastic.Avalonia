@@ -4,10 +4,10 @@ open System
 open Avalonia.Animation
 open Avalonia.Animation.Easings
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module SpringAnimationsPage =
     let borderTestStyle (this: WidgetBuilder<'msg, IFabBorder>) =

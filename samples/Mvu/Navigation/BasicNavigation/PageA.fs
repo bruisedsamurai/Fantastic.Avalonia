@@ -1,9 +1,9 @@
 namespace BasicNavigation
 
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module PageA =
     type Model = { Count: int }

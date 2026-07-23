@@ -4,9 +4,9 @@ open System.Collections.ObjectModel
 open Avalonia.Controls
 open Avalonia.Data
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module DataGridPage =
     type Person(name, age, male) =

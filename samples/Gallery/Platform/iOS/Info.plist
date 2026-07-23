@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Gallery</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.fabulous.avalonia.Gallery</string>
+	<string>org.fantastic.avalonia.Gallery</string>
 	<key>MinimumOSVersion</key>
 	<string>13.0</string>
 	<key>CFBundleShortVersionString</key>

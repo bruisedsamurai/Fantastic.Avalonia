@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\src\Fabulous.Avalonia.props" />
+  <Import Project="..\..\src\Fantastic.Avalonia.props" />
   
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -172,15 +172,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.ColorPicker\Fabulous.Avalonia.ColorPicker.fsproj" />
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.DataGrid\Fabulous.Avalonia.DataGrid.fsproj" />
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.Diagnostics\Fabulous.Avalonia.Diagnostics.fsproj" />
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.ItemsRepeater\Fabulous.Avalonia.ItemsRepeater.fsproj" />
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.Labs\Fabulous.Avalonia.Labs.fsproj" />
-    <ProjectReference Include="..\..\extensions\Fabulous.Avalonia.TreeDataGrid\Fabulous.Avalonia.TreeDataGrid.fsproj" />
-    <ProjectReference Include="..\..\src\Fabulous.Avalonia\Fabulous.Avalonia.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.ColorPicker\Fantastic.Avalonia.ColorPicker.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.DataGrid\Fantastic.Avalonia.DataGrid.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.Diagnostics\Fantastic.Avalonia.Diagnostics.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.ItemsRepeater\Fantastic.Avalonia.ItemsRepeater.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.Labs\Fantastic.Avalonia.Labs.fsproj" />
+    <ProjectReference Include="..\..\extensions\Fantastic.Avalonia.TreeDataGrid\Fantastic.Avalonia.TreeDataGrid.fsproj" />
+    <ProjectReference Include="..\..\src\Fantastic.Avalonia\Fantastic.Avalonia.fsproj" />
     <ProjectReference Include="..\ControlSamples\ControlSamples.csproj" />
   </ItemGroup>
 
-  <Import Project="..\Fabulous.Avalonia.Samples.targets" />
+  <Import Project="..\Fantastic.Avalonia.Samples.targets" />
 </Project>

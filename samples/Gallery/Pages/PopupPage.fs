@@ -7,9 +7,9 @@ open Avalonia.Controls
 open Avalonia.Controls.Primitives.PopupPositioning
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module PopupPage =
     type Model = { IsOpen: bool }

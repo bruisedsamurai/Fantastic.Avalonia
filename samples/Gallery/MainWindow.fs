@@ -6,13 +6,13 @@ open Avalonia.Controls
 open Avalonia.Markup.Xaml.Styling
 open Avalonia.Media.Immutable
 open Controls.HamburgerMenu
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
 open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Styling
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module MainWindow =
     type Model =

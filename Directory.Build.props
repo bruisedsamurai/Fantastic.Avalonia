@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <RepositoryUrl>https://github.com/fabulous-dev/Fabulous.Avalonia</RepositoryUrl>
+    <RepositoryUrl>https://github.com/bruisedsamurai/Fantastic.Avalonia</RepositoryUrl>
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
     <DisableImplicitSystemValueTupleReference>true</DisableImplicitSystemValueTupleReference>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
@@ -17,7 +17,7 @@
     <PackageIcon>nuget-icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/fabulous-dev/Fabulous.Avalonia</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/bruisedsamurai/Fantastic.Avalonia</PackageProjectUrl>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 

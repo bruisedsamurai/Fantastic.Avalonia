@@ -5,11 +5,11 @@ open Avalonia
 open Avalonia.Controls
 open Avalonia.Media
 open Avalonia.Media.Immutable
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous.StackAllocatedCollections.StackList
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 type FormattedText() =
     inherit Control()
@@ -68,7 +68,7 @@ module FormattedText =
 [<AutoOpen>]
 module FormattedTextBuilders =
 
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member FormattedText() =
             WidgetBuilder<'msg, IFabFormattedTextControl>(FormattedText.WidgetKey)

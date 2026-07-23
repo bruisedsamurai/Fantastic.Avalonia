@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-_No unreleased changes_
+
+## [12.1.0] - 2026-07-23
+
+### Changed
+- Rename the template package, identities, and short names to `Fantastic.Avalonia`.
 
 ## [3.0.0-pre13] - 2025-11-19
 ### Added
@@ -99,11 +103,12 @@ _No unreleased changes_
 
 ## [2.0.0-pre16] - 2023-10-31
 ### Added
-- Improve the blank template to use the latest Fabulous.Avalonia features.
-- Add a new template for a multi-project Fabulous.Avalonia app. 
+- Improve the blank template to use the latest Fantastic.Avalonia features.
+- Add a new template for a multi-project Fantastic.Avalonia app. 
 - Fix black screen in multi-project template when targeting Browser
 
-[unreleased]: https://github.com/fabulous-dev/Fabulous.Avalonia.Templates/compare/3.0.0-pre13...HEAD
+[unreleased]: https://github.com/bruisedsamurai/Fantastic.Avalonia/compare/12.1.0...HEAD
+[12.1.0]: https://github.com/bruisedsamurai/Fantastic.Avalonia/releases/tag/12.1.0
 [3.0.0-pre13]: https://github.com/fabulous-dev/Fabulous.Avalonia.Templates/releases/tag/3.0.0-pre13
 [3.0.0-pre12]: https://github.com/fabulous-dev/Fabulous.Avalonia.Templates/releases/tag/3.0.0-pre12
 [3.0.0-pre11]: https://github.com/fabulous-dev/Fabulous.Avalonia.Templates/releases/tag/3.0.0-pre11

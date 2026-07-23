@@ -5,7 +5,7 @@
         <key>CFBundleDisplayName</key>
         <string>MvuCounterApp</string>
         <key>CFBundleIdentifier</key>
-        <string>org.fabulous.avalonia.CounterApp</string>
+        <string>org.fantastic.avalonia.CounterApp</string>
         <key>CFBundleShortVersionString</key>
         <string>1.0</string>
         <key>CFBundleVersion</key>

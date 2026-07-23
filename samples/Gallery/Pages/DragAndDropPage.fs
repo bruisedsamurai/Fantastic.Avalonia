@@ -7,11 +7,11 @@ open Avalonia.Input
 open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Platform.Storage
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia.Controls
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module Validation =
     let getFiles () =

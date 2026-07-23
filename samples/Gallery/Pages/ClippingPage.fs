@@ -5,10 +5,10 @@ open System.Diagnostics
 open Avalonia.Input
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ClippingPage =
     type Model = { IsChecked: bool; BrushColor: IBrush }

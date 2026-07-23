@@ -3,10 +3,10 @@ namespace Gallery
 open System.ComponentModel
 open System.Diagnostics
 open Avalonia.Input
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ContextFlyoutPage =
     type Model = { Counter: int; IsChecked: bool }

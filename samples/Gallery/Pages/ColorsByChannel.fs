@@ -6,13 +6,13 @@ open System.Reflection
 open Avalonia.Layout
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-(* Are these builders worth including into Fabulous.Avalonia in one form or the other?
+(* Are these builders worth including into Fantastic.Avalonia in one form or the other?
     Otherwise - how to create empty HWraps or VWraps for itemsPanel() extensions like below? *)
 [<AutoOpen>]
 module EmptyWrapPanelBuilders =
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         /// <summary>Creates a <see cref="WrapPanel" /> with <see cref="WrapPanel.Orientation" /> set to <see cref="Orientation.Vertical" />
         /// rendering child elements from left to right while they fit the width and starting a new line when there is no space left
@@ -26,7 +26,7 @@ module EmptyWrapPanelBuilders =
         static member EmptyHWrap() =
             WidgetBuilder<'msg, IFabPanel>(WrapPanel.WidgetKey, WrapPanel.Orientation.WithValue(Orientation.Horizontal))
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ColorsByChannel =
     type ColorInfo =

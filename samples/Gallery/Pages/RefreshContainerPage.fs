@@ -5,11 +5,11 @@ open System.Diagnostics
 open System.Threading.Tasks
 open Avalonia.Controls
 open Avalonia.Layout
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 open Avalonia.Input
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module RefreshContainerPage =
     type Model = { Items: ObservableCollection<string> }

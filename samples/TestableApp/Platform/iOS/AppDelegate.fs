@@ -2,7 +2,7 @@ namespace TestableApp.iOS
 
 open Avalonia
 open Avalonia.iOS
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Foundation
 open TestableApp
 open UIKit

@@ -2,9 +2,9 @@ namespace BasicNavigation
 
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open type Fabulous.Context
 
 module PageC =

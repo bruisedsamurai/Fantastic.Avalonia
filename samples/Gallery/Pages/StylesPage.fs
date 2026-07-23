@@ -3,9 +3,9 @@ namespace Gallery
 open Avalonia.Controls
 open Avalonia.Media
 open Avalonia.Styling
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module StylesPage =
 

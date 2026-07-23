@@ -1,11 +1,11 @@
 namespace Gallery
 
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Controls
 
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 open Fabulous.StackAllocatedCollections.StackList
 
 type IFabMvuCompositionPage =
@@ -17,7 +17,7 @@ module CompositionPageControl =
 [<AutoOpen>]
 module CompositionPageControlBuilders =
 
-    type Fabulous.Avalonia.View with
+    type Fantastic.Avalonia.View with
 
         static member CompositionPageControl() =
             WidgetBuilder<'msg, IFabMvuCompositionPage>(CompositionPageControl.WidgetKey)

@@ -1,6 +1,6 @@
 ﻿namespace TestableApp
 
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Avalonia
 open Avalonia.Headless
 

@@ -2,10 +2,10 @@ namespace Gallery
 
 open System
 open System.Diagnostics
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module CalendarDatePickerPage =
     type Model = { Date: DateTime option }

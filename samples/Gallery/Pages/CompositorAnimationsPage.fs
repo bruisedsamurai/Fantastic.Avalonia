@@ -1,8 +1,8 @@
 namespace Gallery
 
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module CompositorAnimationsPage =
 

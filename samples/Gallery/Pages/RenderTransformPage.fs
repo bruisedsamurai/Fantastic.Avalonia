@@ -3,11 +3,11 @@ namespace Gallery
 open System
 open Avalonia.Media
 open Avalonia
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module RenderTransformPage =
     let borderTestStyle (this: WidgetBuilder<'msg, IFabBorder>) =

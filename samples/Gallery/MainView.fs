@@ -5,10 +5,10 @@ open System.Diagnostics
 open Avalonia.Controls
 open Avalonia.Interactivity
 open Avalonia.Markup.Xaml.Styling
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module MainView =
     type Model = { Details: DetailPage option }

@@ -5,10 +5,10 @@ open System.Collections.ObjectModel
 open System.Diagnostics
 open Avalonia.Controls
 open Avalonia.Controls.Selection
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module ListBoxPage =
     type ItemModel =

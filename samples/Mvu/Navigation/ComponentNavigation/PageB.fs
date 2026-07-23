@@ -3,9 +3,9 @@ namespace ComponentNavigation
 open Avalonia.Controls
 open Avalonia.Media
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module PageB =
     type Model =

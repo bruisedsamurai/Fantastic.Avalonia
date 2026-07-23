@@ -2,9 +2,9 @@ namespace Gallery
 
 open Avalonia.Controls
 open Avalonia.Media
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module WrapPanelsPage =
     let horizontalWrapPanelView () =

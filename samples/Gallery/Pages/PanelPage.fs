@@ -2,8 +2,8 @@ namespace Gallery
 
 open Avalonia.Layout
 open Avalonia.Media
-open Fabulous.Avalonia
-open type Fabulous.Avalonia.View
+open Fantastic.Avalonia
+open type Fantastic.Avalonia.View
 
 module PanelPage =
     let view () =

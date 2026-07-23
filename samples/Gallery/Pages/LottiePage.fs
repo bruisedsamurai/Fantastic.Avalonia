@@ -10,10 +10,10 @@ open Avalonia.Layout
 open Avalonia.Media
 open Avalonia.Platform
 open Avalonia.Labs.Lottie
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open Fabulous
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module LottiePage =
     [<AllowNullLiteral>]

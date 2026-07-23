@@ -3,14 +3,14 @@ namespace GitHubClient
 open System.Diagnostics
 open Avalonia.Markup.Xaml.Styling
 open Fabulous
-open Fabulous.Avalonia
+open Fantastic.Avalonia
 open System.Net
 open System
 open System.Net.Http
 
 open System.Text.Json
 
-open type Fabulous.Avalonia.View
+open type Fantastic.Avalonia.View
 
 module Models =
     type RemoteData<'T> =
