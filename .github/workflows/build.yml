@@ -61,7 +61,7 @@ jobs:
         run: |
           LOCAL_NUGET_PATH=$(readlink -f ${NUPKG_FOLDER})
           dotnet nuget add source $LOCAL_NUGET_PATH --name local
-          dotnet new install Fantastic.Avalonia.Templates::${NIGHTLY_VERSION}
+          dotnet new install Fantastic.Avalonia.Templates@${NIGHTLY_VERSION}
       - name: Test single project template
         run: |
           dotnet new fantastic-avalonia -n SingleProjectTemplate
@@ -74,10 +74,10 @@ jobs:
         run: |
           dotnet new fantastic-avalonia-multi -n MultiProjectTemplate
           # Build non-iOS heads explicitly for the same Xcode compatibility reason.
-          dotnet build MultiProjectTemplate/NewApp/NewApp.fsproj -p:ManagePackageVersionsCentrally=false
-          dotnet build MultiProjectTemplate/NewApp.Desktop/NewApp.Desktop.fsproj -p:ManagePackageVersionsCentrally=false
-          dotnet build MultiProjectTemplate/NewApp.Android/NewApp.Android.fsproj -p:ManagePackageVersionsCentrally=false
-          dotnet build MultiProjectTemplate/NewApp.Browser/NewApp.Browser.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/MultiProjectTemplate/MultiProjectTemplate.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/MultiProjectTemplate.Desktop/MultiProjectTemplate.Desktop.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/MultiProjectTemplate.Android/MultiProjectTemplate.Android.fsproj -p:ManagePackageVersionsCentrally=false
+          dotnet build MultiProjectTemplate/MultiProjectTemplate.Browser/MultiProjectTemplate.Browser.fsproj -p:ManagePackageVersionsCentrally=false
       - name: Test desktop project template
         run: |
           dotnet new fantastic-avalonia-desktop -n DesktopProjectTemplate
