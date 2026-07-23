@@ -116,14 +116,14 @@ jobs:
         TEMPLATES_RELEASE_NOTES: ${{ steps.templates_changelog.outputs.changes }}
       run: |
         find templates -type f -name template.json | xargs sed -i bak "s/PKG_VERSION/${RELEASE_VERSION}/g"
-        dotnet pack ${MAIN_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${MAIN_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${AVALONIALABS_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${AVALONIALABS_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${ITEMSREPEATER_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${ITEMSREPEATER_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${COLORPICKER_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${COLORPICKER_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${DATAGRID_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${DATAGRID_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${TREEDATAGRID_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${TREEDATAGRID_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${DIAGNOSTICS_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${DIAGNOSTICS_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
-        dotnet pack ${TEMPLATE_PROJ} -p:Version=${RELEASE_VERSION} -p:PackageReleaseNotes="${TEMPLATES_RELEASE_NOTES}" -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${MAIN_RELEASE_NOTES}" dotnet pack ${MAIN_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${AVALONIALABS_RELEASE_NOTES}" dotnet pack ${AVALONIALABS_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${ITEMSREPEATER_RELEASE_NOTES}" dotnet pack ${ITEMSREPEATER_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${COLORPICKER_RELEASE_NOTES}" dotnet pack ${COLORPICKER_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${DATAGRID_RELEASE_NOTES}" dotnet pack ${DATAGRID_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${TREEDATAGRID_RELEASE_NOTES}" dotnet pack ${TREEDATAGRID_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${DIAGNOSTICS_RELEASE_NOTES}" dotnet pack ${DIAGNOSTICS_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
+        PackageReleaseNotes="${TEMPLATES_RELEASE_NOTES}" dotnet pack ${TEMPLATE_PROJ} -p:Version=${RELEASE_VERSION} -c ${CONFIG} --property PackageOutputPath=${PWD}/nupkgs
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
