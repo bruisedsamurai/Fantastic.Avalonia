@@ -24,6 +24,12 @@ module SelectableTextBlock =
     let SelectionBrush =
         Attributes.defineAvaloniaPropertyWithEquality SelectableTextBlock.SelectionBrushProperty
 
+    let SelectionForegroundBrushWidget =
+        Attributes.defineAvaloniaPropertyWidget SelectableTextBlock.SelectionForegroundBrushProperty
+
+    let SelectionForegroundBrush =
+        Attributes.defineAvaloniaPropertyWithEquality SelectableTextBlock.SelectionForegroundBrushProperty
+
 type SelectableTextBlockModifiers =
 
     /// <summary>Sets the SelectionStart property.</summary>
@@ -67,6 +73,34 @@ type SelectableTextBlockModifiers =
     [<Extension>]
     static member inline selectionBrush(this: WidgetBuilder<'msg, #IFabSelectableTextBlock>, value: string) =
         SelectableTextBlockModifiers.selectionBrush(this, View.SolidColorBrush(value))
+
+    /// <summary>Sets the SelectionForegroundBrush property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionForegroundBrush value.</param>
+    [<Extension>]
+    static member inline selectionForegroundBrush(this: WidgetBuilder<'msg, #IFabSelectableTextBlock>, value: WidgetBuilder<'msg, #IFabBrush>) =
+        this.AddWidget(SelectableTextBlock.SelectionForegroundBrushWidget.WithValue(value.Compile()))
+
+    /// <summary>Sets the SelectionForegroundBrush property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionForegroundBrush value.</param>
+    [<Extension>]
+    static member inline selectionForegroundBrush(this: WidgetBuilder<'msg, #IFabSelectableTextBlock>, value: IBrush) =
+        this.AddScalar(SelectableTextBlock.SelectionForegroundBrush.WithValue(value))
+
+    /// <summary>Sets the SelectionForegroundBrush property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionForegroundBrush value.</param>
+    [<Extension>]
+    static member inline selectionForegroundBrush(this: WidgetBuilder<'msg, #IFabSelectableTextBlock>, value: Color) =
+        SelectableTextBlockModifiers.selectionForegroundBrush(this, View.SolidColorBrush(value))
+
+    /// <summary>Sets the SelectionForegroundBrush property.</summary>
+    /// <param name="this">Current widget.</param>
+    /// <param name="value">The SelectionForegroundBrush value.</param>
+    [<Extension>]
+    static member inline selectionForegroundBrush(this: WidgetBuilder<'msg, #IFabSelectableTextBlock>, value: string) =
+        SelectableTextBlockModifiers.selectionForegroundBrush(this, View.SolidColorBrush(value))
 
     /// <summary>Link a ViewRef to access the direct SelectableTextBlock control instance.</summary>
     /// <param name="this">Current widget.</param>
